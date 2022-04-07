@@ -1,0 +1,1 @@
+-- Your script to create your database and table
