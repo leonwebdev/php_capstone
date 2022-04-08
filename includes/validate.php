@@ -37,7 +37,7 @@ if (!preg_match('/^[A-z0-9\s\-\,\'\_]{1,255}$/', $_POST['city'])) {
 }
 
 // Postal Code can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['postal_code'])) {
+if (!preg_match('/^([a-zA-Z]\d[a-zA-Z])\ {0,1}(\d[a-zA-Z]\d)$/', $_POST['postal_code'])) {
     $errors['postal_code'][] = 'Postal Code contains invalid characters';
 }
 
