@@ -38,7 +38,7 @@ if (!preg_match('/^[A-z0-9\s\-\,\'\_]{1,255}$/', $_POST['city'])) {
 
 // Postal Code can contain only valid characters
 if (!preg_match('/^([a-zA-Z]\d[a-zA-Z])\ {0,1}(\d[a-zA-Z]\d)$/', $_POST['postal_code'])) {
-    $errors['postal_code'][] = 'Postal Code contains invalid characters';
+    $errors['postal_code'][] = 'Postal Code must be like A2A 2A2';
 }
 
 // Province can contain only valid characters
@@ -52,8 +52,8 @@ if (!preg_match('/^[A-z0-9\s\-\,\'\_]{1,255}$/', $_POST['country'])) {
 }
 
 // Phone can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['phone'])) {
-    $errors['phone'][] = 'Phone contains invalid characters';
+if (!preg_match('/^[\(]?[0-9]{3}[\-\)\ \.]?[0-9]{3}[\-\ \.]?[0-9]{4}$/', $_POST['phone'])) {
+    $errors['phone'][] = 'Phone must be like 123-123-1234';
 }
 
 // Email must be valid
