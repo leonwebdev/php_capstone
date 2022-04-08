@@ -769,3 +769,15 @@ button:hover {
   }
   
 }
+
+/* --------- PHP Program CSS -------------------------*/
+
+.error{
+  display: inline-block;
+  color: rgb(219, 6, 6);
+  padding-left: 1em;
+}
+/* 
+.error::before{
+  content: "*";
+} */

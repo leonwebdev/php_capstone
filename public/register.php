@@ -7,6 +7,61 @@ $title = "Register";
 
 $errors = [];
 
+if ('POST' == $_SERVER['REQUEST_METHOD']) {
+
+    /* STEP 1 - VALIDATE ALL FIELDS
+   ---------------------------------------------------- */
+
+    require __DIR__ . '/../includes/validate.php';
+
+    /* STEP 2 -- IF NO ERRORS, INSERT THEN REDIRECT
+    -------------------------------------------------------- */
+
+
+    if (count($errors) == 0) {
+
+        $query = "INSERT INTO employees
+                  (
+                      first_name, 
+                      last_name, 
+                      email, 
+                      phone, 
+                      department
+                   )
+                   VALUES
+                   (
+                       :first_name,
+                       :last_name,
+                       :email,
+                       :phone,
+                       :department
+                   )";
+
+        $stmt = $dbh->prepare($query);
+
+        $stmt->bindValue(':first_name', $_POST['first_name']);
+        $stmt->bindValue(':last_name', $_POST['last_name']);
+        $stmt->bindValue(':email', $_POST['email']);
+        $stmt->bindValue(':phone', $_POST['phone']);
+        $stmt->bindValue(':department', $_POST['department']);
+
+        $stmt->execute();
+
+        $id = $dbh->lastInsertId();
+
+        if ($id) {
+            header('Location: 03_search.php');
+            die;
+        } else {
+            die('<h1>There was a problem inserting the employee.</h1>');
+        }
+    }
+
+
+    /* STEP 3 - IF THERE ARE ERRORS, DISPLAY FORM WITH ERRORS
+    -------------------------------------------------------- */
+}
+
 include __DIR__ . '/../includes/header.inc.php';
 
 ?>
@@ -88,8 +143,7 @@ include __DIR__ . '/../includes/header.inc.php';
 
         <p>
             <label for="subscribe_to_newsletter">Subscribe to newsletter</label>
-            <input type="checkbox" name="subscribe_to_newsletter"
-                value="<?= e($_POST['subscribe_to_newsletter'] ?? '') ?>">
+            <input type="checkbox" name="subscribe_to_newsletter" value="<?= e($_POST['subscribe_to_newsletter'] ?? '') ?>">
             <span class="error"><?= $errors['subscribe_to_newsletter'][0] ?? '' ?></span>
         </p>
 
