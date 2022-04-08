@@ -37,6 +37,7 @@ body{
 .main_wrapper{
   max-width: 1200px;
   margin: 0 auto;
+  padding: 10px 10px;
 }
 
 header{
@@ -98,7 +99,7 @@ header{
   margin: 15px 1px;
   float: left;
   width: 200px;
-  margin-left: 20px;
+  /* margin-left: 10px; */
 /*  padding: 2rem 0;*/
   -webkit-animation: logoAnimation 3s ease-in-out both infinite;
   animation: logoAnimation 3s ease-in-out both infinite;
@@ -541,11 +542,10 @@ form legend{
   border-radius: 7px;
 }
 
-form #fs_1 label{
-  display: block;
+form label{
+  display: inline-block;
   width: 160px;
-  clear: both;
-  float: left;
+  height: max-content;
   text-align: right;
   padding-right: 1em;
   padding-top: 0.4em;
@@ -568,33 +568,15 @@ form input[type="number"]{
   margin-left: 15px;
 }
 
-form input[type="submit"],
-form input[type="reset"]{
-  padding: 6px 9px;
-  font-size: 1.2em;
-  border: 2px solid #9e1752;
-  background-color: #fff;
-  padding: 10px 10px;
-  width: 150px;
-  height: 3rem;
-  border-radius: 7px;
-  text-align: center;  
-}
-
-form input[type="submit"]:hover,
-form input[type="reset"]:hover{
-  background-color: #BE5F7C;
-  color: #fff;
-}
 
 form input[type="text"]:hover,
 form input[type="password"]:hover,
 form input[type="email"]:hover,
 form input[type="tel"]:hover,
 form input[type="number"]:hover{
-  background-color: #E4F99C;
+  background-color: #f8ffdf;
   color: #1A4505;
-  border: 1px solid #222B05;
+  border: 1px solid #293406;
 }
 
 form input[type="text"]:focus,
@@ -602,9 +584,33 @@ form input[type="password"]:focus,
 form input[type="email"]:focus,
 form input[type="tel"]:focus,
 form input[type="number"]:focus{
-  background-color: #6BCFE2;
+  background-color: #daf3f8;
   color: #041A1E;
   border: 1px solid #041A1E;
+}
+
+.btn, button {
+  background: #2b90ee;
+  border-radius: 999px;
+  box-shadow: #2b90ee 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  cursor: pointer;
+  padding: 8px 18px;
+  border: 0;
+  display: inline-block;
+  margin: 50px auto;
+  width: 130px;
+  transition: all .3s ease-in-out;
+}
+
+button:hover {
+  background: #0068ca;
+  box-shadow: #0068ca 0 10px 20px -10px;
+  transform: scale(1.1);
 }
 
 #newsletter_section div{
