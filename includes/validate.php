@@ -27,12 +27,12 @@ if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['last_name'])) {
 }
 
 // Street can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['street'])) {
+if (!preg_match('/^[A-z0-9\s\-\,\'\\\_\(\)\/\#]{1,255}$/', $_POST['street'])) {
     $errors['street'][] = 'Street contains invalid characters';
 }
 
 // City can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['city'])) {
+if (!preg_match('/^[A-z0-9\s\-\,\'\_]{1,255}$/', $_POST['city'])) {
     $errors['city'][] = 'City contains invalid characters';
 }
 
@@ -42,12 +42,12 @@ if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['postal_code'])) {
 }
 
 // Province can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['province'])) {
+if (!preg_match('/^[A-z0-9\s\-\,\'\_]{1,255}$/', $_POST['province'])) {
     $errors['province'][] = 'Province contains invalid characters';
 }
 
 // Country can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['country'])) {
+if (!preg_match('/^[A-z0-9\s\-\,\'\_]{1,255}$/', $_POST['country'])) {
     $errors['country'][] = 'Country contains invalid characters';
 }
 
@@ -64,19 +64,4 @@ if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 // Password can contain only valid characters
 if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['password'])) {
     $errors['password'][] = 'Password contains invalid characters';
-}
-
-// Street can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['street'])) {
-    $errors['street'][] = 'Street contains invalid characters';
-}
-
-// Street can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['street'])) {
-    $errors['street'][] = 'Street contains invalid characters';
-}
-
-// Street can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['street'])) {
-    $errors['street'][] = 'Street contains invalid characters';
 }
