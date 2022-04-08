@@ -58,7 +58,7 @@ if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['phone'])) {
 
 // Email must be valid
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    $errors['email'][] = 'Email must be a valid email';
+    $errors['email'][] = 'Email must be a legal email';
 }
 
 // Password can contain only valid characters
