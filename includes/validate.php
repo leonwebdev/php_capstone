@@ -6,7 +6,7 @@ foreach ($_POST as $key => $value) {
 }
 
 // The following fields are required
-$required = ['id', 'first_name', 'last_name', 'street', 'city', 'postal_code', 'province', 'country', 'phone', 'email', 'password', 'password_confirm'];
+$required = ['first_name', 'last_name', 'street', 'city', 'postal_code', 'province', 'country', 'phone', 'email', 'password', 'password_confirm'];
 
 // All fields are required
 foreach ($required as $post_key) {
@@ -81,4 +81,5 @@ if ($_POST["password"] !== $_POST["password_confirm"]) {
 
 echo '<pre>';
 echo print_r($_POST);
+echo print_r($errors);
 echo '</pre>';

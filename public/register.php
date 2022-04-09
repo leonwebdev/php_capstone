@@ -20,37 +20,55 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
     if (count($errors) == 0) {
 
-        $query = "INSERT INTO employees
+        $query = "INSERT INTO users
                   (
                       first_name, 
-                      last_name, 
-                      email, 
-                      phone, 
-                      department
+                      last_name,
+                      street,
+                      city,
+                      postal_code,
+                      province,
+                      country,
+                      phone,
+                      email,
+                      password,
+                      subscribe_to_newsletter
                    )
                    VALUES
                    (
-                       :first_name,
-                       :last_name,
-                       :email,
-                       :phone,
-                       :department
+                      :first_name, 
+                      :last_name,
+                      :street,
+                      :city,
+                      :postal_code,
+                      :province,
+                      :country,
+                      :phone,
+                      :email,
+                      :password,
+                      :subscribe_to_newsletter
                    )";
 
         $stmt = $dbh->prepare($query);
 
         $stmt->bindValue(':first_name', $_POST['first_name']);
         $stmt->bindValue(':last_name', $_POST['last_name']);
-        $stmt->bindValue(':email', $_POST['email']);
+        $stmt->bindValue(':street', $_POST['street']);
+        $stmt->bindValue(':city', $_POST['city']);
+        $stmt->bindValue(':postal_code', $_POST['postal_code']);
+        $stmt->bindValue(':province', $_POST['province']);
+        $stmt->bindValue(':country', $_POST['country']);
         $stmt->bindValue(':phone', $_POST['phone']);
-        $stmt->bindValue(':department', $_POST['department']);
+        $stmt->bindValue(':email', $_POST['email']);
+        $stmt->bindValue(':password', $_POST['password']);
+        $stmt->bindValue(':subscribe_to_newsletter', $_POST['subscribe_to_newsletter']);
 
         $stmt->execute();
 
         $id = $dbh->lastInsertId();
 
         if ($id) {
-            header('Location: 03_search.php');
+            header("Location: profile.php?id=$id");
             die;
         } else {
             die('<h1>There was a problem inserting the employee.</h1>');

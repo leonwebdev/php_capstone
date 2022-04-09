@@ -2,7 +2,7 @@
 
 include __DIR__ . '/../includes/functions.php';
 
-$title = "Home";
+$title = "Profile";
 
 include __DIR__ . '/../includes/header.inc.php';
 
