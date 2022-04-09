@@ -61,6 +61,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         $stmt->bindValue(':phone', $_POST['phone']);
         $stmt->bindValue(':email', $_POST['email']);
         $stmt->bindValue(':password', $_POST['password']);
+        $_POST['subscribe_to_newsletter'] = $_POST['subscribe_to_newsletter'] ?? 0;
         $stmt->bindValue(':subscribe_to_newsletter', $_POST['subscribe_to_newsletter']);
 
         $stmt->execute();
@@ -161,7 +162,8 @@ include __DIR__ . '/../includes/header.inc.php';
 
         <p>
             <label for="subscribe_to_newsletter">Subscribe to newsletter</label>
-            <input type="checkbox" name="subscribe_to_newsletter" value="<?= e($_POST['subscribe_to_newsletter'] ?? 1) ?>">
+            <input type="checkbox" name="subscribe_to_newsletter"
+                value="<?= e($_POST['subscribe_to_newsletter'] ?? 1) ?>">
             <span class="error"><?= $errors['subscribe_to_newsletter'][0] ?? '' ?></span>
         </p>
 
