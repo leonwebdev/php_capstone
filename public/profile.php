@@ -55,6 +55,24 @@ include __DIR__ . '/../includes/header.inc.php';
 
 ?>
 <!-- HEADER --------------------------------- -->
-
+<div class="main_wrapper">
+    <h1>Your <?= e($title) ?></h1>
+    <div class="flex-container" style="width:max-content;margin: 0 auto;">
+        <div style="padding: 1.5em;"><img src="./images/rose.jpg" alt="profile img"></div>
+        <div style="flex-basis: max-content; padding-left: 1em;">
+            <h2>Your Information</h2>
+            <p><strong>First Name</strong>: <?= e($results['first_name']) ?></p>
+            <p><strong>Last Name</strong>: <?= e($results['last_name']) ?></p>
+            <p><strong>Phone</strong>: <?= e($results['phone']) ?></p>
+            <p><strong>Email</strong>: <?= e($results['email']) ?></p>
+            <h2>Mailing Address</h2>
+            <p><strong>Street</strong>: <?= e($results['street']) ?></p>
+            <p><strong>City</strong>: <?= e($results['city']) ?></p>
+            <p><strong>Postal Code</strong>: <?= e($results['postal_code']) ?></p>
+            <p><strong>Province</strong>: <?= e($results['province']) ?></p>
+            <p><strong>Country</strong>: <?= e($results['country']) ?></p>
+        </div>
+    </div>
+</div>
 <!-- FOOTER --------------------------------- -->
 <?php include __DIR__ . '/../includes/footer.inc.php'; ?>

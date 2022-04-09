@@ -35,7 +35,7 @@ body{
 }
 
 .main_wrapper{
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 10px 10px;
 }
@@ -670,7 +670,7 @@ button:hover {
   }
   
   #account_login span{
-    display: none;
+    /* display: none; */
   }
   
   #left_arrow,#right_arrow{
@@ -788,4 +788,9 @@ button:hover {
   padding: 13px 11px 12px 14px;
   min-width: 50px;
   text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
 }
