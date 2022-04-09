@@ -6,7 +6,7 @@ foreach ($_POST as $key => $value) {
 }
 
 // The following fields are required
-$required = ['id', 'first_name', 'last_name', 'street', 'city', 'postal_code', 'province', 'country', 'phone', 'email', 'password', 'password_confirm', 'subscribe_to_newsletter'];
+$required = ['id', 'first_name', 'last_name', 'street', 'city', 'postal_code', 'province', 'country', 'phone', 'email', 'password', 'password_confirm'];
 
 // All fields are required
 foreach ($required as $post_key) {
@@ -73,3 +73,12 @@ $specialChars = preg_match('/[\W]/', $password_to_validate);
 if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password_to_validate) < 8) {
     $errors['password'][] = 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
 }
+
+// Confirm password
+if ($_POST["password"] !== $_POST["password_confirm"]) {
+    $errors['password_confirm'][] = 'Please input the same password again';
+}
+
+echo '<pre>';
+echo print_r($_POST);
+echo '</pre>';
