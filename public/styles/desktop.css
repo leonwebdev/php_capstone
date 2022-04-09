@@ -782,3 +782,10 @@ button:hover {
 .error::before{
   content: "*";
 } */
+
+.plain_a{
+  text-decoration: none;
+  padding: 13px 11px 12px 14px;
+  min-width: 50px;
+  text-align: center;
+}
