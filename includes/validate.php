@@ -61,7 +61,15 @@ if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $errors['email'][] = 'Email must be a legal email';
 }
 
-// Password can contain only valid characters
-if (!preg_match('/^[A-z0-9\s\-\,\']{1,255}$/', $_POST['password'])) {
-    $errors['password'][] = 'Password contains invalid characters';
+// Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.
+$password_to_validate = $_POST['password'];
+
+// Validate password
+$uppercase    = preg_match('/[A-Z]/', $password_to_validate);
+$lowercase    = preg_match('/[a-z]/', $password_to_validate);
+$number       = preg_match('/[0-9]/', $password_to_validate);
+$specialChars = preg_match('/[\W]/', $password_to_validate);
+
+if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password_to_validate) < 8) {
+    $errors['password'][] = 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
 }
