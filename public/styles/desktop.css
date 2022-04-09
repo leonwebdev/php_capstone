@@ -669,9 +669,9 @@ button:hover {
     right: 11px;
   }
   
-  #account_login span{
-    /* display: none; */
-  }
+  /* #account_login span{
+    display: none;
+  } */
   
   #left_arrow,#right_arrow{
     display: none;
