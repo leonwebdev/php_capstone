@@ -139,7 +139,8 @@
                 <span><a href="register.php" class="plain_a">Register</a></span>
                 <?php else : ?>
                 <span><a href="#" class="plain_a">Logout</a></span>
-                <span><?= ucwords(str_replace('_', ' ', e($_GET['first_name'])))  ?></span>
+                <span><a href="#"
+                        class="plain_a"><?= ucwords(str_replace('_', ' ', e($results['first_name']))) ?></a></span>
                 <?php endif; ?>
             </div>
 

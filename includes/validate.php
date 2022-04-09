@@ -79,7 +79,7 @@ if ($_POST["password"] !== $_POST["password_confirm"]) {
     $errors['password_confirm'][] = 'Please input the same password again';
 }
 
-echo '<pre>';
-echo print_r($_POST);
-echo print_r($errors);
-echo '</pre>';
+// echo '<pre>';
+// echo print_r($_POST);
+// echo print_r($errors);
+// echo '</pre>';

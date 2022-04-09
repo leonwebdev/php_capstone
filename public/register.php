@@ -161,8 +161,7 @@ include __DIR__ . '/../includes/header.inc.php';
 
         <p>
             <label for="subscribe_to_newsletter">Subscribe to newsletter</label>
-            <input type="checkbox" name="subscribe_to_newsletter"
-                value="<?= e($_POST['subscribe_to_newsletter'] ?? 1) ?>">
+            <input type="checkbox" name="subscribe_to_newsletter" value="<?= e($_POST['subscribe_to_newsletter'] ?? 1) ?>">
             <span class="error"><?= $errors['subscribe_to_newsletter'][0] ?? '' ?></span>
         </p>
 
