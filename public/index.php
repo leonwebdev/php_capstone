@@ -1,18 +1,38 @@
 <?php
 
-include __DIR__ . '/../includes/functions.php';
+define('ENV', 'development'); // testing, production, development
 
-$title = "Home";
+require __DIR__ . '/../config/functions.php';
+require __DIR__ . '/../config/connect.php';
+require __DIR__ . '/../config/escape.php';
+// require __DIR__ . '/../models/book.php';
 
-include __DIR__ . '/../includes/header.inc.php';
 
-?>
-<!-- HEADER --------------------------------- -->
-<div class="main_wrapper">
-    <h1><?= e($title) ?></h1>
-    <div style="text-align: center; height: 500px; padding-top: 100px;">
-        <h1>Click <a href="register.php" class="plain_a">Register</a> on the Top Right Corner</h1>
-    </div>
-</div>
-<!-- FOOTER --------------------------------- -->
-<?php include __DIR__ . '/../includes/footer.inc.php'; ?>
+/* Our Front Controller
+---------------------------------- */
+
+// Define allowed routes
+$allowed = ['home', 'mine', 'newsletter', 'timeline', 'community', 'register', 'profile'];
+
+// Figure out what user is requesting
+// Figure out if we have that amd if the user is allowed to requrest it
+
+if (empty($_GET['p'])) {
+    $page = 'home';
+} elseif (in_array($_GET['p'], $allowed)) {
+    $page = $_GET['p'];
+} else {
+    http_response_code(404);
+    $page = 'error404';
+}
+
+// Load it if we have it (and it's allowed)
+// Output 404 error message if we don't have
+
+$path = __DIR__ . '/../controllers/' . $page . '.php';
+require($path);
+
+
+
+
+// echo '<p>You are here!</p>';
