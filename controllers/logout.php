@@ -4,6 +4,10 @@ ob_start();
 
 $title = 'Logout';
 
-// Get flash message
-$flash = $_SESSION['flash'] ?? [];
-unset($_SESSION['flash']);
+unset($_SESSION['user_id']);
+
+session_regenerate_id();
+
+$_SESSION['flash']['success'] = 'Bye! You have logged out!';
+header('Location: /index.php?p=login');
+die;
