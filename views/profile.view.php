@@ -6,7 +6,20 @@ include __DIR__ . '/inc/header.inc.php';
 <!-- HEADER --------------------------------- -->
 <div class="main_wrapper">
     <h1>Your <?= esc($title) ?></h1>
-    <div class="flex-container" style="width:max-content;margin: 0 auto;">
+
+    <?php if (!empty($flash['success'])) : ?>
+    <div class="flash success">
+        <?= esc($flash['success']) ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if (!empty($flash['error'])) : ?>
+    <div class="flash error">
+        <?= esc($flash['error']) ?>
+    </div>
+    <?php endif; ?>
+
+    <div class="flex-container" style="width:max-content;">
         <div style="padding: 1.5em;"><img src="./images/rose.jpg" alt="profile img"></div>
         <div style="flex-basis: max-content; padding-left: 1em;">
             <h2>Your Information</h2>

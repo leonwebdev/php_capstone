@@ -4,6 +4,10 @@ ob_start();
 
 $title = "Profile";
 
+// Get flash message
+$flash = $_SESSION['flash'] ?? [];
+unset($_SESSION['flash']);
+
 if ($_SESSION['user_id']) {
     // Query profile
     $query = "SELECT
@@ -46,4 +50,4 @@ if ($_SESSION['user_id']) {
     die('<h1>There is no profile</h1>');
 }
 
-view('profile', compact('title'));
+view('profile', compact('title', 'results', 'flash'));
