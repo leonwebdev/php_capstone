@@ -4,6 +4,7 @@ define('ENV', 'development'); // testing, production, development
 
 // ----- SESSION START ------************
 session_start();
+ob_start();
 
 
 require __DIR__ . '/../config/functions.php';

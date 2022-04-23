@@ -26,7 +26,7 @@ function view(string $view_name, array $data = []): void
 function dd($var)
 {
     echo '<pre>';
-    print_r($var);
+    var_dump($var);
     die;
 }
 

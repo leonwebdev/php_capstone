@@ -8,7 +8,7 @@
  * @param string $str
  * @return string
  */
-function e(string $str): string
+function e($str): string
 {
     return htmlentities($str, ENT_QUOTES, "UTF-8");
 }

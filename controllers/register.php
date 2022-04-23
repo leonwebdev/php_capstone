@@ -1,15 +1,21 @@
 <?php
 
+ob_start();
+
 $title = "Register";
 
-$errors = [];
+$errors = $errors ?? [];
 
-if ('POST' == $_SERVER['REQUEST_METHOD']) {
+if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
     /* STEP 1 - VALIDATE ALL FIELDS
    ---------------------------------------------------- */
 
-    require __DIR__ . '/../includes/validate.php';
+    require __DIR__ . './../models/validate.php';
+
+    // consolelog($errors);
+    // consolelog($_SESSION['register_form_errors']);
+
 
     /* STEP 2 -- IF NO ERRORS, INSERT THEN REDIRECT
     -------------------------------------------------------- */
@@ -69,7 +75,12 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         $id = $dbh->lastInsertId();
 
         if ($id) {
-            header("Location: profile.php?id=$id");
+
+            $_SESSION['user_id'] = $id;
+            $_SESSION['flash']['success'] = 'Congrats! Register success!!!';
+
+            $path = __DIR__ . './?p=profile';
+            header("Location: $path");
             die;
         } else {
             die('<h1>There was a problem inserting the employee.</h1>');
@@ -81,4 +92,4 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
     -------------------------------------------------------- */
 }
 
-view('register', compact('title'));
+view('register', compact('title', 'errors'));

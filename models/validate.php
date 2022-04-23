@@ -1,5 +1,7 @@
 <?php
 
+ob_start();
+
 // Trim spaces from around all values
 foreach ($_POST as $key => $value) {
     $_POST[$key] = trim($value);
@@ -78,6 +80,8 @@ if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password
 if ($_POST["password"] !== $_POST["password_confirm"]) {
     $errors['password_confirm'][] = 'Please input the same password again';
 }
+
+// consolelog($errors);
 
 // echo '<pre>';
 // echo print_r($_POST);
