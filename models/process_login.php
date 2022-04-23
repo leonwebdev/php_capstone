@@ -27,11 +27,11 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$user || !password_verify($_POST['password'], $user['password'])) {
 
     $_SESSION['flash']['error'] = 'Sorry, no user found or wrong password, please try again.';
-    header('Location: /?=login');
+    header('Location:/index.php?p=login');
     die;
 }
 
 $_SESSION['flash']['success'] = 'Welcome!' . $user['first_name'] . $user['last_name'] . ', you are logged in!';
 $_SESSION['user_id'] = $user['id'];
-header('Location: /?=profile');
+header('Location:/index.php?p=profile');
 die;
