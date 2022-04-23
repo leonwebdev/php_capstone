@@ -81,7 +81,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
             $_SESSION['user_id'] = $id;
             $_SESSION['flash']['success'] = 'Congrats! Register success!!!';
 
-            $path = '/php_capstone/public/index.php?p=profile';
+            $path = '?p=profile';
             header("Location: $path");
             die;
         } else {
