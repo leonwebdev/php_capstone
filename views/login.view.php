@@ -11,7 +11,19 @@ include __DIR__ . '/inc/header.inc.php';
 
     <h1><?= esc($title) ?></h1>
 
-    <form method="post" action="process_login.php" novalidate>
+    <?php if (!empty($flash['success'])) : ?>
+    <div class="flash success">
+        <?= esc($flash['success']) ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if (!empty($flash['error'])) : ?>
+    <div class="flash error">
+        <?= esc($flash['error']) ?>
+    </div>
+    <?php endif; ?>
+
+    <form method="post" novalidate>
         <p>
             <label for="email">Email</label>
             <input type="text" name="email" value="<?= esc($_POST['email'] ?? '') ?>">

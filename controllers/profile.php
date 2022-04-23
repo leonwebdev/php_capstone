@@ -46,8 +46,10 @@ if ($_SESSION['user_id']) {
     // echo print_r($results) . '<br>';
     // echo '</pre>';
 } else {
-    // die;
-    die('<h1>There is no profile</h1>');
+
+    $_SESSION['flash']['error'] = 'Sorry, you must login to view this page.';
+    header('Location: /?=login');
+    die;
 }
 
 view('profile', compact('title', 'results', 'flash'));
