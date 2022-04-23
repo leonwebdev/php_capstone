@@ -17,7 +17,7 @@ require __DIR__ . '/../config/escape.php';
 ---------------------------------- */
 
 // Define allowed routes
-$allowed = ['home', 'mine', 'newsletter', 'timeline', 'community', 'register', 'profile', 'login'];
+$allowed = ['home', 'mine', 'newsletter', 'timeline', 'community', 'register', 'profile', 'login', 'logout'];
 
 // Figure out what user is requesting
 // Figure out if we have that amd if the user is allowed to requrest it
