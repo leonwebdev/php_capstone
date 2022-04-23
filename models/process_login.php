@@ -31,7 +31,8 @@ if (!$user || !password_verify($_POST['password'], $user['password'])) {
     die;
 }
 
-$_SESSION['flash']['success'] = 'Welcome!' . $user['first_name'] . $user['last_name'] . ', you are logged in!';
+session_regenerate_id();
+$_SESSION['flash']['success'] = 'Welcome! ' . $user['first_name'] . ' ' . $user['last_name'] . ', you are logged in!';
 $_SESSION['user_id'] = $user['id'];
 header('Location:/index.php?p=profile');
 die;
