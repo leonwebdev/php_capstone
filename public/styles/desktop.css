@@ -797,7 +797,7 @@ button:hover {
 
 /* --------- PHP Program CSS -------------------------*/
 
-.error {
+.form_validate_error {
   display: inline-block;
   color: rgb(219, 6, 6);
   padding-left: 1em;
