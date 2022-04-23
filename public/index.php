@@ -2,17 +2,21 @@
 
 define('ENV', 'development'); // testing, production, development
 
+// ----- SESSION START ------************
+session_start();
+
+
 require __DIR__ . '/../config/functions.php';
 require __DIR__ . '/../config/connect.php';
 require __DIR__ . '/../config/escape.php';
-// require __DIR__ . '/../models/book.php';
+// require __DIR__ . '/../models/validate.php';
 
 
 /* Our Front Controller
 ---------------------------------- */
 
 // Define allowed routes
-$allowed = ['home', 'mine', 'newsletter', 'timeline', 'community', 'register', 'profile'];
+$allowed = ['home', 'mine', 'newsletter', 'timeline', 'community', 'register', 'profile', 'login'];
 
 // Figure out what user is requesting
 // Figure out if we have that amd if the user is allowed to requrest it
@@ -31,8 +35,3 @@ if (empty($_GET['p'])) {
 
 $path = __DIR__ . '/../controllers/' . $page . '.php';
 require($path);
-
-
-
-
-// echo '<p>You are here!</p>';

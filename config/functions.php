@@ -42,3 +42,17 @@ function dc()
         echo "<script>console.log($json)</script>";
     }
 }
+
+/**
+ * [consolelog var_dump variable within <pre> tag]
+ *
+ * @param   [type]  $var  [$var ]
+ *
+ * @return  [type]        [return void]
+ */
+function consolelog($var): void
+{
+    echo '<pre>';
+    var_dump($var);
+    echo '</pre>';
+}
