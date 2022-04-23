@@ -1,8 +1,10 @@
 <?php
 
+ob_start();
+
 $title = "Profile";
 
-if ($_GET['id']) {
+if ($_SESSION['user_id']) {
     // Query profile
     $query = "SELECT
                 first_name,
@@ -26,7 +28,7 @@ if ($_GET['id']) {
 
     $stmt = $dbh->prepare($query);
 
-    $stmt->bindValue(':id', $_REQUEST['id']);
+    $stmt->bindValue(':id', $_SESSION['user_id']);
 
     $stmt->execute();
 
