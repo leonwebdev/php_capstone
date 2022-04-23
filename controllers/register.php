@@ -17,6 +17,9 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
     if (count($errors) == 0) {
 
+        // Hash password -------------------------
+        $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
         $query = "INSERT INTO users
                   (
                       first_name, 
@@ -57,7 +60,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
         $stmt->bindValue(':country', $_POST['country']);
         $stmt->bindValue(':phone', $_POST['phone']);
         $stmt->bindValue(':email', $_POST['email']);
-        $stmt->bindValue(':password', $_POST['password']);
+        $stmt->bindValue(':password', $hash);
         $_POST['subscribe_to_newsletter'] = $_POST['subscribe_to_newsletter'] ?? 0;
         $stmt->bindValue(':subscribe_to_newsletter', $_POST['subscribe_to_newsletter']);
 
