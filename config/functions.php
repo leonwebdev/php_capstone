@@ -26,7 +26,7 @@ function view(string $view_name, array $data = []): void
 function dd($var)
 {
     echo '<pre>';
-    print_r($var);
+    var_dump($var);
     die;
 }
 
@@ -44,12 +44,56 @@ function dc()
 }
 
 /**
- * Escape string for safe output
+ * [consolelog var_dump variable within <pre> tag]
  *
- * @param string $str
- * @return string
+ * @param   [type]  $var  [$var ]
+ *
+ * @return  [type]        [return void]
  */
-function e(string $str): string
+function consolelog($var): void
 {
-    return htmlentities($str, ENT_QUOTES, "UTF-8");
+    echo '<pre>';
+    var_dump($var);
+    echo '</pre>';
+}
+
+
+/**
+ * [check if insert email is unique in database]
+ *
+ * @param   string  $email  [user input email]
+ *
+ * @return  bool            [return true if email is unique, return false if email has existed]
+ */
+function isEmailUnique(string $email): bool
+{
+    // query from database if there is an email similar with the input email
+    global $dbh;
+
+    $query = "
+            SELECT
+                email
+
+            FROM
+                users
+
+            WHERE
+                email LIKE :email
+    ";
+
+    $stmt = $dbh->prepare($query);
+
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+
+    $stmt->execute();
+
+    $results = $stmt->fetch();
+
+    // dd($results);
+
+    if ($results) {
+        return false;
+    } else {
+        return true;
+    }
 }

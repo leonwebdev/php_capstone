@@ -3,12 +3,23 @@
 // Escape Functions
 
 /**
+ * Escape string for safe output
+ *
+ * @param string $str
+ * @return string
+ */
+function e($str): string
+{
+    return htmlentities($str, ENT_QUOTES, "UTF-8");
+}
+
+/**
  * Sanitize string for output to HTML
  *
  * @param string $str
  * @return string
  */
-function esc(string $str):string
+function esc(string $str): string
 {
     return htmlentities($str, ENT_NOQUOTES, "UTF-8");
 }
@@ -19,10 +30,9 @@ function esc(string $str):string
  * @param string $str
  * @return string
  */
-function esc_attr(string $str):string
+function esc_attr(string $str): string
 {
     return htmlentities($str, ENT_QUOTES, "UTF-8");
-
 }
 
 /**
@@ -31,7 +41,7 @@ function esc_attr(string $str):string
  * @param mixed $var
  * @return mixed
  */
-function raw(mixed $var):mixed
+function raw(mixed $var): mixed
 {
     return $var;
 }
@@ -42,7 +52,7 @@ function raw(mixed $var):mixed
  * @param string $str
  * @return string
  */
-function html(string $str):string 
+function html(string $str): string
 {
     $allowed = [
         '<p>',
