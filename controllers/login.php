@@ -21,7 +21,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     -------------------------------------------------------- */
 
     if (count($errors) == 0) {
-        
     }
+}
 
-view('login', compact('title'));
+view('login', compact('title', 'errors'));

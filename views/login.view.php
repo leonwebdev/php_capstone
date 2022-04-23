@@ -12,10 +12,19 @@ include __DIR__ . '/inc/header.inc.php';
     <h1><?= esc($title) ?></h1>
 
     <form method="post" action="process_login.php" novalidate>
-        <p>Email: <input type="text" name="email" value="<?= e($post['email'] ?? '') ?>" />
-            <?= e($errors['email'] ?? '') ?></p>
-        <p>Password: <input type="password" name="password" /></p>
-        <p><input type="submit" /></p>
+        <p>
+            <label for="email">Email</label>
+            <input type="text" name="email" value="<?= esc($_POST['email'] ?? '') ?>">
+            <span class="form_validate_error"><?= esc($errors['email'][0] ?? '') ?></span>
+        </p>
+
+        <p>
+            <label for="password">Password</label>
+            <input type="password" name="password" value="">
+            <span class="form_validate_error"><?= esc($errors['password'][0] ?? '') ?></span>
+        </p>
+
+        <p><button type="submit" style="margin-left: 180px;">Submit</button></p>
     </form>
 </div>
 
