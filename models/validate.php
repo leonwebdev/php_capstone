@@ -63,6 +63,11 @@ if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $errors['email'][] = 'Email must be a legal email';
 }
 
+// Email must be unique
+if (!isEmailUnique($_POST['email'])) {
+    $errors['email'][] = 'Email has existed, please use another email';
+}
+
 // Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.
 $password_to_validate = $_POST['password'];
 

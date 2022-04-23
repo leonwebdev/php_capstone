@@ -56,3 +56,44 @@ function consolelog($var): void
     var_dump($var);
     echo '</pre>';
 }
+
+
+/**
+ * [check if insert email is unique in database]
+ *
+ * @param   string  $email  [user input email]
+ *
+ * @return  bool            [return true if email is unique, return false if email has existed]
+ */
+function isEmailUnique(string $email): bool
+{
+    // query from database if there is an email similar with the input email
+    global $dbh;
+
+    $query = "
+            SELECT
+                email
+
+            FROM
+                users
+
+            WHERE
+                email LIKE :email
+    ";
+
+    $stmt = $dbh->prepare($query);
+
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+
+    $stmt->execute();
+
+    $results = $stmt->fetch();
+
+    // dd($results);
+
+    if ($results) {
+        return false;
+    } else {
+        return true;
+    }
+}
