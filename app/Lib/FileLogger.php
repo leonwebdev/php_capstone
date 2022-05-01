@@ -7,33 +7,16 @@ use \App\Lib\Interfaces\ILogger;
 class FileLogger implements ILogger
 {
     protected static $fh;
-    protected $table = 'log';
 
-    public function __construct($dbh)
+    public function __construct($fh)
     {
-        self::$dbh = $dbh;
+        self::$fh = $fh;
     }
 
-    public function write($event): string|bool
+    public function write($event): void
     {
-        $query = "INSERT INTO {$this->table}
-                    (
-                        event
-                    )
-                    VALUES
-                    (
-                        :event
-                    )
-                ";
+        fputs(self::$fh, $event . "\n");
 
-        $stmt = self::$dbh->prepare($query);
-
-        $stmt->bindValue(':event', $event);
-
-        $stmt->execute();
-
-        $id = self::$dbh->lastInsertId();
-
-        return $id;
+        fclose(self::$fh);
     }
 }
