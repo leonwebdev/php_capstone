@@ -15,7 +15,7 @@ $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 -------------------------------------------------------------*/
 
 // the file we want to open
-$file = __DIR__ . './../logs/events.log';
+$file = __DIR__ . '/../logs/events.log';
 
 if (file_exists($file)) {
 
