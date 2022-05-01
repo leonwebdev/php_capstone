@@ -31,6 +31,11 @@ $fileLogger = new FileLogger($fh);
 
 $title = 'Dashboard | Administration';
 
+            // ----- Get recent ten log entries --------------------
+            // ---------------------------------------------
+
+            $recent_ten_log_entries = $databaseLogger->getRecentTenEntries();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

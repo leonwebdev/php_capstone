@@ -36,4 +36,21 @@ class DatabaseLogger implements ILogger
 
         return $id;
     }
+
+    public function getRecentTenEntries(): array
+    {
+        $query = "SELECT
+                    event
+                  FROM
+                    {$this->table}
+                  ORDER BY id DESC
+                  LIMIT 10
+                ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
