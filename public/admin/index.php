@@ -45,37 +45,44 @@ $recent_ten_log_entries = $databaseLogger->getRecentTenEntries();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= esc($title); ?></title>
+    <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
-    <style>
-    /* .row div {
-        border: 1px solid #cfcfcf;
-    } */
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand navbar-dark bg-black">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Gardener Admin</a>
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Posts</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Comments</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
-            </ul>
+            <a class="navbar-brand flex-grow-1" href="#">Gardener Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Posts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Comments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <div class="content container mt-5 mb-5">
 
         <div class="row">
-            <h1 class="mb-4"><?= esc($title); ?></h1>
-            <div class="main col-10">
+            <h1 class="mb-5"><?= esc($title); ?></h1>
+            <div class="main col-12">
                 <h2>Recent Log Entries</h2>
 
-                <table id="log" class="table table-striped">
+                <table id="log" class="table table-striped table-bordered">
                     <tr>
                         <th>date/time | http status | request method | request URI | User Browser Info</th>
                     </tr>
