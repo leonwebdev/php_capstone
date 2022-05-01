@@ -98,16 +98,20 @@ function isEmailUnique(string $email): bool
     }
 }
 
-function logEvent(ILogger $logger, $event = '')
-{
-// You will need to create a meaningful event string. This would
-// usually be the data and time, the page that was requested, the
-// user's browser, whether or not the request was successful.
+use \App\Lib\Interfaces\ILogger;
 
-if(empty($event)){
-$event = 'see_comment_above';}
-// invoke the $logger's write method to save the event in the log.
-// Depending on the type of $logger passed int, the event will
-// be saved in a database, or written to file
-$logger->write($event);
+function logEvent(ILogger $logger, $event = 'test')
+{
+    // You will need to create a meaningful event string. This would
+    // usually be the data and time, the page that was requested, the
+    // user's browser, whether or not the request was successful.
+
+    if (empty($event)) {
+
+        $event = 'see_comment_above';
+    }
+    // invoke the $logger's write method to save the event in the log.
+    // Depending on the type of $logger passed int, the event will
+    // be saved in a database, or written to file
+    $logger->write($event);
 }
