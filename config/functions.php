@@ -100,18 +100,23 @@ function isEmailUnique(string $email): bool
 
 use \App\Lib\Interfaces\ILogger;
 
-function logEvent(ILogger $logger, $event = 'test')
+/**
+ * log an event into database or log-file
+ *
+ * @param ILogger $logger
+ *   the object which event will be written in
+ * @param string $event
+ *   the event string will be written in
+ *
+ * @return void
+ *   [return void]
+ */
+function logEvent(ILogger $logger, string $event = ''): void
 {
-    // You will need to create a meaningful event string. This would
-    // usually be the data and time, the page that was requested, the
-    // user's browser, whether or not the request was successful.
-
     if (empty($event)) {
 
-        $event = 'see_comment_above';
+        $event = date('Y-M-d H:i:s') . ' void event';
     }
-    // invoke the $logger's write method to save the event in the log.
-    // Depending on the type of $logger passed int, the event will
-    // be saved in a database, or written to file
+
     $logger->write($event);
 }
