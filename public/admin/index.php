@@ -31,10 +31,10 @@ $fileLogger = new FileLogger($fh);
 
 $title = 'Dashboard | Administration';
 
-            // ----- Get recent ten log entries --------------------
-            // ---------------------------------------------
+// ----- Get recent ten log entries --------------------
+// ---------------------------------------------
 
-            $recent_ten_log_entries = $databaseLogger->getRecentTenEntries();
+$recent_ten_log_entries = $databaseLogger->getRecentTenEntries();
 
 ?>
 <!DOCTYPE html>
@@ -71,22 +71,28 @@ $title = 'Dashboard | Administration';
     <div class="content container mt-5 mb-5">
 
         <div class="row">
-
+            <h1 class="mb-4"><?= esc($title); ?></h1>
             <div class="main col-10">
-                <h1>Recent Log Entries</h1>
+                <h2>Recent Log Entries</h2>
+
+                <table id="log" class="table table-striped">
+                    <tr>
+                        <th>date/time | http status | request method | request URI | User Browser Info</th>
+                    </tr>
+                    <?php foreach ($recent_ten_log_entries as $key => $value) : ?>
+                    <tr>
+                        <td>
+                            <small><?= esc($value['event']) ?></small>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
             </div>
-
         </div>
-
     </div>
 
-    <div class="container">
-        <hr>
-        <div class="row">
-            <div class="footer col text-center pt-4 pb-2">
-                <p>&copy; 2021-2022. Lihang Yao. MB R3B 0E3</p>
-            </div>
-        </div>
+    <div class="footer text-center py-5 text-white bg-dark">
+        <p class="my-3">&copy; 2021-2022. Lihang Yao. MB R3B 0E3</p>
     </div>
 
 </body>

@@ -57,23 +57,7 @@ $path = __DIR__ . '/../controllers/' . $page . '.php';
 /* ----- Get The Data Needed to Write A LOG
 --------------------------------------------------------------- */
 
-// consolelog($_SERVER);
-// consolelog(http_response_code());
-// consolelog(date('D, Y-M-d H:i:s'));
-
-$required_info = [
-    'REQUEST_METHOD', 'REQUEST_URI', 'HTTP_USER_AGENT'
-];
-
-$event = '';
-$event .= date('Y-M-d H:i:s') . ' | ' . http_response_code();
-
-foreach ($required_info as $key) {
-
-    $event .= ' | ' . $_SERVER[$key];
-}
-
-// consolelog($event);
+$event = createLogEvent($_SERVER, http_response_code());
 
 /* ----- LOG USER REQUEST everytime user refresh page
 --------------------------------------------------------------- */
