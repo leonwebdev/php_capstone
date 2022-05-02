@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS capstone;
+-- DROP DATABASE IF EXISTS capstone;
 
-CREATE DATABASE capstone;
+-- CREATE DATABASE capstone;
 
 USE capstone;
 
@@ -23,54 +23,3 @@ CREATE TABLE users (
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-
-/*
- INSERT INTO
- users (
- first_name,
- last_name,
- email,
- phone,
- subscribe_to_newsletter,
- deleted,
- created_at,
- updated_at
- )
- VALUES
- (
- 'Dave',
- 'Jones',
- 'djones@borland.com',
- '212-555-3456',
- '1',
- '0' '2021-01-12 09:03:52',
- '2021-01-12 09:03:52'
- ),
- (
- 'Henry',
- 'Bissoon',
- 'hbissoon@borland.com',
- '204-323-1145',
- '1',
- '0' '2021-06-22 09:03:52',
- '2021-06-22 09:03:52'
- ),
- (
- 'Margaret',
- 'Thomson',
- 'mthomson@borland.com',
- '234-456-6548',
- '1',
- '0' '2021-08-16 09:03:52',
- '2021-08-16 09:03:52'
- ),
- (
- 'Jill',
- 'King',
- 'jking@borland.com',
- '212-555-4432',
- '1',
- '0' '2021-09-17 09:03:52',
- '2021-09-17 09:03:52'
- );
- */

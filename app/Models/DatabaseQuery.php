@@ -3,7 +3,7 @@
 namespace App\Models;
 
 /**
- * [DatabaseQuery -Database query prototype class]
+ * DatabaseQuery -Database query prototype class
  */
 abstract class DatabaseQuery
 {
@@ -12,9 +12,9 @@ abstract class DatabaseQuery
     protected $key = 'id';
 
     /**
-     * [init -construction static Model::$dbh]
+     * init -construction static Model::$dbh
      *
-     * @param   [PDO]  $dbh - the PDO we use to connect database
+     * @param   PDO  $dbh - the PDO we use to connect database
      *
      */
     public function __construct($dbh)
@@ -23,9 +23,9 @@ abstract class DatabaseQuery
     }
 
     /**
-     * [getDbh return the current PDO]
+     * getDbh return the current PDO
      *
-     * @return  [PDO]  [return the current PDO]
+     * @return  PDO  return the current PDO
      */
     public function getDbh()
     {
@@ -33,9 +33,9 @@ abstract class DatabaseQuery
     }
 
     /**
-     * [getAll return All data from database]
+     * getAll return All data from database
      *
-     * @return  [mixed]  [return All data from database or false if no data found]
+     * @return  mixed  return All data from database or false if no data found
      */
     public function getAll(): mixed
     {
@@ -52,11 +52,11 @@ abstract class DatabaseQuery
     }
 
     /**
-     * [getOne return user info by user id]
+     * getOne return user info by user id
      *
-     * @param   [int]  $id  the user id that will be use to query
+     * @param   int  $id  the user id that will be use to query
      *
-     * @return  [mixed]       [return user info by user id or FALSE if no data found]
+     * @return  mixed       return user info by user id or FALSE if no data found
      */
     public function getOne(int $id): mixed
     {

@@ -5,16 +5,16 @@ namespace App\Models;
 use \App\Models\DatabaseQuery;
 
 /**
- * [User -extend from DatabaseQuery]
+ * User -extend from DatabaseQuery
  */
 class User extends DatabaseQuery
 {
     protected $table = 'users';
 
     /**
-     * [getDbh return the current PDO]
+     * getDbh return the current PDO
      *
-     * @return  [PDO]  [return the current PDO]
+     * @return  PDO  return the current PDO
      */
     public function getDbh()
     {
@@ -22,11 +22,11 @@ class User extends DatabaseQuery
     }
 
     /**
-     * [create a new user record]
+     * create a new user record
      *
      * @param   array  $array  input user info to insert into database
      *
-     * @return  int            [return last insert id]
+     * @return  int            return last insert id
      */
     public function create(array $array): int
     {
@@ -85,12 +85,12 @@ class User extends DatabaseQuery
     }
 
     /**
-     * [update a user's info by user id]
+     * update a user's info by user id
      *
      * @param   array  $array  info will be updated
      * @param   int    $id     user id
      *
-     * @return  array          [return last updated user info]
+     * @return  array          return last updated user info
      */
     public function update(array $array, int $id): array
     {
@@ -138,7 +138,7 @@ class User extends DatabaseQuery
     }
 
     /**
-     * [delete a user record by user id]
+     * delete a user record by user id
      *
      * @param   int     $id  user id
      *
