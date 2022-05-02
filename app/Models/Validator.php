@@ -19,7 +19,7 @@ class Validator
      *
      * @var array
      */
-    private $errors;
+    private $errors = [];
 
     /**
      *

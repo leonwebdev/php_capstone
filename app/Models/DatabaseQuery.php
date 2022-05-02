@@ -1,12 +1,14 @@
 <?php
 
+namespace App\Models;
+
 /**
  * [DatabaseQuery -Database query prototype class]
  */
 abstract class DatabaseQuery
 {
     protected static $dbh;
-    protected $table;
+    protected $table = '';
     protected $key = 'id';
 
     /**
@@ -15,7 +17,7 @@ abstract class DatabaseQuery
      * @param   [PDO]  $dbh - the PDO we use to connect database
      *
      */
-    public static function init($dbh)
+    public function __construct($dbh)
     {
         self::$dbh = $dbh;
     }
@@ -61,7 +63,7 @@ abstract class DatabaseQuery
         $query = "  SELECT *
                     FROM {$this->table}
                     WHERE {$this->key} = :id
-                    AND deleted =0";
+                    AND deleted = 0";
 
         $stmt = self::$dbh->prepare($query);
 

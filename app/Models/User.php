@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Models;
+
+use \App\Models\DatabaseQuery;
+
 /**
  * [User -extend from DatabaseQuery]
  */
@@ -204,5 +208,32 @@ class User extends DatabaseQuery
             );
 
         return $message;
+    }
+
+    /**
+     * get One User Info by Email
+     *
+     * @param string $field
+     *   field name
+     * @param string $email
+     *   the actual email to query
+     *
+     * @return array
+     *   array contains user info
+     */
+    public function getOneByEmail(string $field, string $email): array
+    {
+        $query = "  SELECT *
+                    FROM {$this->table}
+                    WHERE {$field} = :email
+                    AND deleted = 0";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':email', $email);
+
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 }

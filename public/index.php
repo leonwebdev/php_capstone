@@ -18,7 +18,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 // ----- USE -----------------------------------
 // ---------------------------------------------
-
+use \App\Models\User;
 use \App\Lib\DatabaseLogger;
 use \App\Lib\FileLogger;
 
@@ -27,6 +27,11 @@ use \App\Lib\FileLogger;
 
 $databaseLogger = new DatabaseLogger($dbh);
 $fileLogger = new FileLogger($fh);
+
+
+// ----- new User Object to query info ---------
+// ---------------------------------------------
+$user = new User($dbh);
 
 /* ----- Front Controller
 ---------------------------------- */
