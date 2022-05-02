@@ -11,7 +11,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     /* STEP 1 - VALIDATE ALL FIELDS
    ---------------------------------------------------- */
 
-    require __DIR__ . './../modules/validate.php';
+    require __DIR__ . './../modules/validate_register.php';
 
     // consolelog($errors);
     // consolelog($_SESSION['register_form_errors']);
