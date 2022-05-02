@@ -15,18 +15,14 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     /* STEP 1 - VALIDATE ALL FIELDS
    ---------------------------------------------------- */
 
-    require __DIR__ . './../models/validate_login.php';
-
-    // consolelog($errors);
-    // consolelog($_SESSION['register_form_errors']);
-
+    require __DIR__ . './../modules/validate_login.php';
 
     /* STEP 2 -- IF NO ERRORS, REDIRECTE TO PROCESS_LOGIN
     -------------------------------------------------------- */
 
     if (count($errors) == 0) {
 
-        require __DIR__ . './../models/process_login.php';
+        require __DIR__ . './../modules/process_login.php';
     }
 }
 

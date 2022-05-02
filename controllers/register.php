@@ -11,7 +11,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     /* STEP 1 - VALIDATE ALL FIELDS
    ---------------------------------------------------- */
 
-    require __DIR__ . './../models/validate.php';
+    require __DIR__ . './../modules/validate.php';
 
     // consolelog($errors);
     // consolelog($_SESSION['register_form_errors']);
@@ -28,7 +28,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
         $query = "INSERT INTO users
                   (
-                      first_name, 
+                      first_name,
                       last_name,
                       street,
                       city,
@@ -42,7 +42,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
                    )
                    VALUES
                    (
-                      :first_name, 
+                      :first_name,
                       :last_name,
                       :street,
                       :city,
