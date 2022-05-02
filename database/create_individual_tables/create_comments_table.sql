@@ -14,17 +14,19 @@ CREATE TABLE `comments` (
     `content` TEXT NULL DEFAULT NULL,
     `deleted` BOOL NOT NULL DEFAULT 0,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT `fk_comment_post`
+    `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    );
+
+ALTER TABLE `comments`
+ADD CONSTRAINT `fk_comment_post`
         FOREIGN KEY (`postid`)
         REFERENCES `capstone`.`posts` (`id`)
         ON DELETE NO ACTION
-        ON UPDATE NO ACTION
-);
+        ON UPDATE NO ACTION;
 
 ALTER TABLE `comments`
 ADD CONSTRAINT `fk_comment_user`
-    FOREIGN KEY (`userid`)
+        FOREIGN KEY (`userid`)
         REFERENCES `capstone`.`users` (`id`)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
