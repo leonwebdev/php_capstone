@@ -97,3 +97,44 @@ function isEmailUnique(string $email): bool
         return true;
     }
 }
+
+use \App\Lib\Interfaces\ILogger;
+
+/**
+ * log an event into database or log-file
+ *
+ * @param ILogger $logger
+ *   the object which event will be written in
+ * @param string $event
+ *   the event string will be written in
+ *
+ * @return void
+ *   [return void]
+ */
+function logEvent(ILogger $logger, string $event = ''): void
+{
+    if (empty($event)) {
+
+        $event = date('Y-m-d H:i:s') . ' void event';
+    }
+
+    $logger->write($event);
+}
+
+function createLogEvent(array $server_info, string $http_respond_code): string
+{
+
+    $required_info = [
+        'REQUEST_METHOD', 'REQUEST_URI', 'HTTP_USER_AGENT'
+    ];
+
+    $event = '';
+    $event .= date('Y-m-d H:i:s') . ' | ' . $http_respond_code;
+
+    foreach ($required_info as $key) {
+
+        $event .= ' | ' . $server_info[$key];
+    }
+
+    return $event;
+}

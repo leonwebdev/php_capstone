@@ -1,0 +1,10 @@
+USE capstone;
+
+DROP TABLE IF EXISTS log;
+
+CREATE TABLE log
+    (
+        id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        event VARCHAR(255),
+        created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
