@@ -48,13 +48,14 @@ CREATE TABLE `posts` (
     `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
     `authorid` BIGINT NOT NULL,
-    `summary` TINYTEXT NULL,
-    `content` TEXT NULL DEFAULT NULL,
+    `summary` TEXT NULL,
+    `content` LONGTEXT NULL DEFAULT NULL,
     `image` VARCHAR(255),
     `categoryid` BIGINT NOT NULL,
     `status` ENUM('draft', 'hidden', 'post'),
     `allow_comment` BOOL NOT NULL DEFAULT 0,
     `deleted` BOOL NOT NULL DEFAULT 0,
+    `published_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
