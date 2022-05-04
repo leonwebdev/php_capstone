@@ -18,6 +18,7 @@ CREATE TABLE `users` (
     `phone` VARCHAR(255),
     `email` VARCHAR(255),
     `password` VARCHAR(255),
+    `is_admin` BOOL NOT NULL DEFAULT 0,
     `subscribe_to_newsletter` TINYINT NOT NULL DEFAULT 0,
     `deleted` BOOL NOT NULL DEFAULT 0,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -111,10 +112,12 @@ INSERT INTO `users` (
     `country`,
     `phone`,
     `email`,
-    `password`
+    `password`,
+    `is_admin`
     )
     VALUES
-('Lihang','Yao','123 Good Street','Winnipeg','R3C 5W7','Manitoba','Canada','123-123-1234','admin@gardener.com','$2y$10$ZzSz5O1q/3Zit9njCr4LNOnYV6BDcbbWPWPrQcmc1mzp8R0EqwNwG');
+('Lihang','Yao','123 Good Street','Winnipeg','R3C 5W7','Manitoba','Canada','123-123-1234','admin@gardener.com','$2y$10$ZzSz5O1q/3Zit9njCr4LNOnYV6BDcbbWPWPrQcmc1mzp8R0EqwNwG','1'),
+('Chris','Brown','73 Nice Street','Ottawa','R3G 9W3','Ontario','Canada','125-521-1764','chris@gardener.com','$2y$10$ZzSz5O1q/3Zit9njCr4LNOnYV6BDcbbWPWPrQcmc1mzp8R0EqwNwG','0');
 
 INSERT INTO `categories` (`title`)
 VALUES
