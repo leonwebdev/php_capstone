@@ -15,7 +15,7 @@ CREATE TABLE `posts` (
     `image` VARCHAR(255),
     `categoryid` BIGINT NOT NULL,
     `status` ENUM('draft', 'hidden', 'post'),
-    `allow_comment` BOOL NOT NULL DEFAULT 0,
+    `allow_comment` BOOL NOT NULL DEFAULT 1,
     `deleted` BOOL NOT NULL DEFAULT 0,
     `published_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
