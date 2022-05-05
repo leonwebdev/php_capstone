@@ -66,12 +66,6 @@
             </div>
 
         </form>
-        <div>
-
-            <h1>Find <a style="text-decoration: none; color: #f00;" target="_blank" title="Click and go to Marks Page"
-                    href="http://salsa.uwdce.ca/~lyao/HTML_CSS/project/Marking/Marks.html">Marks.html</a> here.</h1>
-
-        </div>
 
     </div>
 

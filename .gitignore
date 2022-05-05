@@ -51,6 +51,7 @@ Thumbs.db
 .vscode
 
 vendor
+draft
 
 *.doc
 *.docx
@@ -58,3 +59,6 @@ credential.php
 credentials.php
 capstone_mysqldump_2022_4_28.sql.bak
 Lihang-Yao-ERD.png
+*.psd
+
+lab4

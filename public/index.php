@@ -38,7 +38,7 @@ $user = new User($dbh);
 
 // Define allowed routes
 $allowed = [
-    'home', 'mine', 'newsletter', 'timeline', 'community',
+    'home', 'post', 'newsletter', 'about',
     'register', 'profile', 'login', 'logout'
 ];
 
