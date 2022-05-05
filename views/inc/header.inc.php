@@ -29,10 +29,13 @@
             <nav>
 
                 <ul id="navlist">
-                    <li><a href="./">Home</a></li>
-                    <li><a href="./?p=post">Post</a></li>
-                    <li><a href="./?p=about">About Us</a></li>
-                    <li><a href="./?p=newsletter">Newsletter</a></li>
+                    <li><a class="<?= esc_attr(('Home' == $title) ? 'active-nav-item' : ''); ?>" href="./">Home</a></li>
+                    <li><a class="<?= esc_attr(('Post' == $title) ? 'active-nav-item' : ''); ?>"
+                            href="./?p=post">Post</a></li>
+                    <li><a class="<?= esc_attr(('About' == $title) ? 'active-nav-item' : ''); ?>"
+                            href="./?p=about">About Us</a></li>
+                    <li><a class="<?= esc_attr(('Newsletter' == $title) ? 'active-nav-item' : ''); ?>"
+                            href="./?p=newsletter">Newsletter</a></li>
                 </ul>
 
             </nav>
