@@ -33,8 +33,9 @@
                     <div>Post date</div>
                     <div>post author</div>
                 </div>
-                <div class="post_title mt1">
-                    <a href="/?p=post&postid=<?= esc_attr($i + 1); ?>" class="plain_a post_card_a">Post Title</a>
+                <div class=" mt1">
+                    <a href="/?p=post&postid=<?= esc_attr($i + 1); ?>" class="plain_a post_card_a post_title">Post
+                        Title</a>
                 </div>
                 <div class="post_summary mt1">post summary</div>
                 <div class="post_category mt1">

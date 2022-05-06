@@ -25,20 +25,22 @@
     </div>
     <div class="flex-container post_detail_recommand_block">
         <?php for ($i = 0; $i < 3; $i++) : ?>
-        <div class="pd1 post_recommend_card">
-            <div>More Article Title</div>
-            <div style="color: #84878b;"><small>April 31</small></div>
-        </div>
-        <?php if ($i < 2) : ?>
-        <div class="post_recommend_dilimiter"></div>
-        <?php endif; ?>
+            <div class="pd1 post_recommend_card">
+                <div>
+                    <a href="/?p=post&postid=<?= esc_attr($i + 1); ?>" class="plain_a post_card_a fw-700 recmd_artical_title">More
+                        Aticle Title</a>
+                </div>
+                <div style="color: #84878b;"><small>April 31</small></div>
+            </div>
+            <?php if ($i < 2) : ?>
+                <div class="post_recommend_dilimiter"></div>
+            <?php endif; ?>
         <?php endfor; ?>
     </div>
     <div class="flex-container pd1 category_list">
         <div>
             <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category1</a></div>
-            <div class="post_category active-category"><a href="/?p=post&categoryid="
-                    class="plain_a cat_list_a">category2</a></div>
+            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category2</a></div>
             <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category3</a></div>
             <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category4</a></div>
             <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category5</a></div>
