@@ -5,12 +5,12 @@
 
     <div class="flex-container pd1 category_list">
         <div>
-            <div class="post_category"><a href="/?p=post&category=" class="plain_a cat_list_a">category1</a></div>
-            <div class="post_category active-category"><a href="/?p=post&category="
+            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category1</a></div>
+            <div class="post_category active-category"><a href="/?p=post&categoryid="
                     class="plain_a cat_list_a">category2</a></div>
-            <div class="post_category"><a href="/?p=post&category=" class="plain_a cat_list_a">category3</a></div>
-            <div class="post_category"><a href="/?p=post&category=" class="plain_a cat_list_a">category4</a></div>
-            <div class="post_category"><a href="/?p=post&category=" class="plain_a cat_list_a">category5</a></div>
+            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category3</a></div>
+            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category4</a></div>
+            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category5</a></div>
         </div>
         <div>
             <form action="/" method="get" autocomplete="off" novalidate>
@@ -34,7 +34,7 @@
                     <div>post author</div>
                 </div>
                 <div class="post_title mt1">
-                    <a href="/?p=post&postid=" class="plain_a post_card_a">Post Title</a>
+                    <a href="/?p=post&postid=<?= esc_attr($i + 1); ?>" class="plain_a post_card_a">Post Title</a>
                 </div>
                 <div class="post_summary mt1">post summary</div>
                 <div class="post_category mt1">
