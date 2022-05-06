@@ -25,16 +25,17 @@
     </div>
     <div class="flex-container post_detail_recommand_block">
         <?php for ($i = 0; $i < 3; $i++) : ?>
-            <div class="pd1 post_recommend_card">
-                <div>
-                    <a href="/?p=post&postid=<?= esc_attr($i + 1); ?>" class="plain_a post_card_a fw-700 recmd_artical_title">More
-                        Aticle Title</a>
-                </div>
-                <div style="color: #84878b;"><small>April 31</small></div>
+        <div class="pd1 post_recommend_card">
+            <div>
+                <a href="/?p=post&postid=<?= esc_attr($i + 1); ?>"
+                    class="plain_a post_card_a fw-700 recmd_artical_title">More
+                    Aticle Title</a>
             </div>
-            <?php if ($i < 2) : ?>
-                <div class="post_recommend_dilimiter"></div>
-            <?php endif; ?>
+            <div style="color: #84878b;"><small>April 31</small></div>
+        </div>
+        <?php if ($i < 2) : ?>
+        <div class="post_recommend_dilimiter"></div>
+        <?php endif; ?>
         <?php endfor; ?>
     </div>
     <div class="flex-container pd1 category_list">
@@ -46,14 +47,13 @@
             <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category5</a></div>
         </div>
     </div>
-    <div>
-        <form action="" method="post">
-            <h1>Please Leave Your Comment</h1>
+    <div id="comment_block">
+        <form id="comment_form" action="" method="post">
+            <h2>Please Leave Your Comment</h2>
             <div>
-                <p><label for="textarea_comment">Comment</label></p>
-                <textarea name="content" id="textarea_comment" cols="30" rows="10"></textarea>
+                <textarea name="content" id="textarea_comment"></textarea>
             </div>
-            <p><button type="submit">Send</button></p>
+            <p><button type="submit" class="rm-btn-margin btn-w-fix btn-p-small">Send</button></p>
         </form>
     </div>
 </div>
