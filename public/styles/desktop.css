@@ -902,6 +902,16 @@ button:hover {
   margin-left: 1em !important;
 }
 
+.cat_list_a{
+  padding: 0;
+  color: #000;
+}
+
+.post_card_a{
+  padding: 0;
+  color: #000;
+}
+
 /*------------ FOR DEBUG
 -------------------------------------------------- */
 
