@@ -818,7 +818,6 @@ button:hover {
 
 .s-box {
   border-radius: 10px;
-  padding: 1em;
   box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
 }
 
@@ -833,14 +832,15 @@ button:hover {
 
 .post_card{
   width: 280px;
+  margin-bottom: 3.5em;
 }
 
 .post-card-2-row{
   justify-content: space-between;
+  color: #777c82;
 }
 
 .post_title{
-  text-align: center;
   font-weight: 700;
   font-size: 2em;
 }
@@ -853,17 +853,53 @@ button:hover {
   color: #6f6f6f;
 }
 
+.active-category{
+  background-color: #8bde0f;
+}
+
 .post_category{
-  border-radius: 1em;
-  padding: 0.3em 0.7em 0.3em 0.7em ;
+  border-radius: 2em;
+  padding: 0.3em 0.7em 0.4em 0.7em ;
   width: fit-content;
   border: 1px solid #000;
+  margin-right: 1em;
+  display: inline-block;
+}
+
+.post_list{
+  justify-content: space-between;
+  padding: 1em 0 1em 0 !important;
+}
+
+.category_list{
+  padding: 1em 0 1em 0 !important;
+  justify-content: space-between;
 }
 
 .active-nav-item{
   color: #63c617 !important;
   font-weight: 700;
   font-size: 1.2em;
+}
+
+.rm-btn-margin{
+  margin: 0 !important;
+}
+
+.btn-w-fix{
+  width: min-content;
+}
+
+.btn-p-small{
+  padding: 3px 13px;
+}
+
+#search{
+  max-width: 10rem;
+}
+
+.ml-1{
+  margin-left: 1em !important;
 }
 
 /*------------ FOR DEBUG
