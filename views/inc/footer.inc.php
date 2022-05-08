@@ -77,13 +77,6 @@
             </div>
         </div>
 
-        <div id="last_modified">
-            <script>
-            document.scripts[document.scripts.length - 1].parentNode.innerHTML = "Last Modified: " + document
-                .lastModified;
-            </script>
-        </div>
-
     </div>
 
 </footer>
