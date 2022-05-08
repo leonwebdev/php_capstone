@@ -47,9 +47,27 @@
             <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category5</a></div>
         </div>
     </div>
+    <div id="comment_exhibition">
+        <?php for ($i = 0; $i < 3; $i++) : ?>
+        <div class="cmt-card flex-container">
+            <div><img class="cmt-pic" src="images/profile_of_comment.jpeg"></div>
+            <div>
+                <div class="flex-container">
+                    <div class="mr1 border-r-1 pr-1 fw-700">User Name</div>
+                    <div class="mr1 post_detail_2_row pr-1"><small>March 23</small></div>
+                </div>
+                <div class="mt1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+            </div>
+        </div>
+        <?php endfor; ?>
+    </div>
     <div id="comment_block">
         <form id="comment_form" action="" method="post">
             <h2>Please Leave Your Comment</h2>
+            <p><a href="/?p=login" class="plain_a post_card_a fw-700 recmd_artical_title">Login</a> or
+                <a href="/?p=register" class="plain_a post_card_a fw-700 recmd_artical_title">Register</a> to leave a
+                comment.
+            </p>
             <div>
                 <textarea name="content" id="textarea_comment"></textarea>
             </div>
