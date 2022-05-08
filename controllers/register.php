@@ -81,7 +81,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
             $_SESSION['user_id'] = $id;
             $_SESSION['flash']['success'] = 'Congrats! Register success!!!';
 
-            header("Location: /index.php?p=profile");
+            header("Location: /?p=profile");
             die;
         } else {
             die('<h1>There was a problem inserting the employee.</h1>');

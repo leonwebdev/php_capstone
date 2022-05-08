@@ -27,7 +27,10 @@
     <div class=" flex-container pd1 post_list">
         <?php for ($i = 0; $i < 10; $i++) : ?>
         <div class="post_card s-box">
-            <div><img src="images/posts/1.jpg" alt="post" class="img-auto-width"></div>
+            <div><a href="/?p=post&postid=<?= esc_attr($i + 1); ?>">
+                    <img src="images/posts/1.jpg" alt="post" class="img-auto-width">
+                </a>
+            </div>
             <div class="pd1">
                 <div class="post-card-2-row flex-container">
                     <div>Post date</div>

@@ -19,20 +19,53 @@ include __DIR__ . '/inc/header.inc.php';
     </div>
     <?php endif; ?>
 
-    <div class="flex-container" style="width:max-content;">
-        <div style="padding: 1.5em;"><img src="./images/rose.jpg" alt="profile img"></div>
-        <div style="flex-basis: max-content; padding-left: 1em;">
-            <h2>Your Information</h2>
+    <div class="flex-container" style="width:100%; margin: 2rem 0;">
+        <div><img src="./images/rose.jpg" alt="profile img" style="border-radius: 999px;width:8rem;"></div>
+        <div style="flex-basis: max-content; padding: 0 2em;">
+            <h2 style="margin-top: 0;">Your Information</h2>
             <p><strong>First Name</strong>: <?= esc($results['first_name']) ?></p>
             <p><strong>Last Name</strong>: <?= esc($results['last_name']) ?></p>
             <p><strong>Phone</strong>: <?= esc($results['phone']) ?></p>
             <p><strong>Email</strong>: <?= esc($results['email']) ?></p>
-            <h2>Mailing Address</h2>
+            <h2 style="margin-top: 3rem;">Mailing Address</h2>
             <p><strong>Street</strong>: <?= esc($results['street']) ?></p>
             <p><strong>City</strong>: <?= esc($results['city']) ?></p>
             <p><strong>Postal Code</strong>: <?= esc($results['postal_code']) ?></p>
             <p><strong>Province</strong>: <?= esc($results['province']) ?></p>
             <p><strong>Country</strong>: <?= esc($results['country']) ?></p>
+        </div>
+        <div style="border-left: 1.5px solid #dadada; padding-left:2em;flex-grow:1;">
+            <h2 style="margin-top: 0;">Your Comments</h2>
+            <p>You have no comments yet. Go to
+                <a href="/?p=post" class="plain_a post_card_a fw-700 recmd_artical_title">Posts.</a>
+            </p>
+            <?php for ($i = 0; $i < 3; $i++) : ?>
+            <div class="flex-container" style="width: 100%;margin-bottom:2em;">
+                <div class="profile_li">
+                    <div class="profile_li_num"><?= esc($i + 1); ?></div>
+                </div>
+                <div style="flex-grow: 1;">
+                    <div style="color: #84878b;display:inline-block;"><small>March 23</small></div>
+                    <div style="display:inline-block;"><small>on</small>
+                        <a href="/?p=post&postid=1" class="plain_a post_card_a fw-700 recmd_artical_title">
+                            Title of Post</a>
+                    </div>
+                    <div>
+                        <a href="/?p=post&postid=1" class="plain_a post_card_a recmd_artical_title"
+                            style="text-align: start;color:#84878b">
+                            <p><em><small>Fugia facere magni eoluptat llendus harum consectetur.</small></em></p>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <form method="POST" action="/">
+                        <input type="hidden" name="p" value="post">
+                        <button type="submit" style="background-color: #d42b06;"
+                            class="rm-btn-margin btn-w-fix btn-p-xsmall rm-btn-box-shadow">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <?php endfor; ?>
         </div>
     </div>
 </div>

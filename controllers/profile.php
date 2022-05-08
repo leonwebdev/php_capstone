@@ -48,7 +48,7 @@ if ($_SESSION['user_id']) {
 } else {
 
     $_SESSION['flash']['error'] = 'Sorry, you must login to view this page.';
-    header('Location:/index.php?p=login');
+    header('Location:/?p=login');
     die;
 }
 
