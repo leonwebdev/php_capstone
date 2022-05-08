@@ -195,7 +195,7 @@ nav ul#navlist li a:hover {
 }
 
 #feature_slide {
-  height: 450px;
+  min-height: 450px;
   background: #9e178f;
   background: linear-gradient(
     121deg,
@@ -353,7 +353,7 @@ span.learn_m_button {
 }
 
 #top_story {
-  height: 400px;
+  min-height: 400px;
 }
 
 footer {

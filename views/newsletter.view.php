@@ -53,8 +53,8 @@
 
                 <p>
 
+                    <label for="consent" style="width: max-content;">Do you consent our terms and conditions?</label>
                     <input type="checkbox" id="consent" name="consent" value="yes_consent">
-                    <label for="consent">Do you consent our terms and conditions?</label>
 
                 </p>
 
