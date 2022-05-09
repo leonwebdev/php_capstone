@@ -12,7 +12,17 @@ if (!empty($_GET['postid'])) {
 
     $post_detail = $post->getOne($_GET['postid']);
 
-    view('post_detail', compact('title', 'post_detail'));
+    $org_date = $post_detail['published_at'];
+
+    $post_date = date(
+        'Y-M-j',
+        strtotime($org_date)
+    );
+
+    view(
+        'post_detail',
+        compact('title', 'post_detail', 'post_date')
+    );
 } else {
     view('post', compact('title'));
 }
