@@ -44,11 +44,11 @@ function dc()
 }
 
 /**
- * [consolelog var_dump variable within <pre> tag]
+ * consolelog var_dump variable within <pre> tag
  *
- * @param   [type]  $var  [$var ]
+ * @param   mixed  $var
  *
- * @return  [type]        [return void]
+ * @return   void  return void
  */
 function consolelog($var): void
 {
@@ -59,11 +59,11 @@ function consolelog($var): void
 
 
 /**
- * [check if insert email is unique in database]
+ * check if insert email is unique in database
  *
- * @param   string  $email  [user input email]
+ * @param   string  $email  user input email
  *
- * @return  bool            [return true if email is unique, return false if email has existed]
+ * @return  bool            return true if email is unique, return false if email has existed
  */
 function isEmailUnique(string $email): bool
 {
@@ -109,7 +109,7 @@ use \App\Lib\Interfaces\ILogger;
  *   the event string will be written in
  *
  * @return void
- *   [return void]
+ *   return void
  */
 function logEvent(ILogger $logger, string $event = ''): void
 {
@@ -121,6 +121,17 @@ function logEvent(ILogger $logger, string $event = ''): void
     $logger->write($event);
 }
 
+/**
+ * create the string to insert into log-file
+ *
+ * @param array $server_info
+ *   $_SERVER by this request
+ * @param string $http_respond_code
+ *   the http respond code
+ *
+ * @return string
+ *   the final concatnate string
+ */
 function createLogEvent(array $server_info, string $http_respond_code): string
 {
 
