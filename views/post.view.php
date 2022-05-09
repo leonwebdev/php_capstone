@@ -5,11 +5,17 @@
 
     <div class="flex-container pd1 category_list">
         <div>
-            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category1</a></div>
-            <div class="post_category active-category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category2</a></div>
-            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category3</a></div>
-            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category4</a></div>
-            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category5</a></div>
+            <?php foreach ($categories as $category) : ?>
+                <div class="post_category
+                <?php if ($category['id'] == $current_cat_id) : ?>
+                active-category
+                <?php endif; ?>
+                ">
+                    <a href="/?p=post&categoryid=<?= esc_attr($category['id']) ?>" class="plain_a cat_list_a">
+                        <?= esc($category['title']); ?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
         </div>
         <div>
             <form action="/" method="get" autocomplete="off" novalidate>

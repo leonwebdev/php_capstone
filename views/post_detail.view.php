@@ -35,11 +35,9 @@
     </div>
     <div class="flex-container pd1 category_list">
         <div>
-            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category1</a></div>
-            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category2</a></div>
-            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category3</a></div>
-            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category4</a></div>
-            <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a">category5</a></div>
+            <?php foreach ($categories as $category) : ?>
+                <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a"><?= esc($category['title']); ?></a></div>
+            <?php endforeach; ?>
         </div>
     </div>
     <div id="comment_exhibition">

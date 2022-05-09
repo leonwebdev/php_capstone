@@ -22,7 +22,7 @@ if (!empty($_GET['postid'])) {
 
     view(
         'post_detail',
-        compact('title', 'post_detail', 'comments', 'user')
+        compact('title', 'post_detail', 'comments', 'user', 'categories')
     );
 } else {
 
@@ -31,5 +31,7 @@ if (!empty($_GET['postid'])) {
 
     $post_details = $posts->getAll();
 
-    view('post', compact('title', 'post_details'));
+    $current_cat_id = $_GET['categoryid'] ?? '';
+
+    view('post', compact('title', 'post_details', 'categories', 'current_cat_id'));
 }
