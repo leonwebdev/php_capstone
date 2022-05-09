@@ -14,7 +14,7 @@
         <div class="mr1 post_detail_2_row border-r-1 pr-1">Leon</div>
         <div class="mr1 post_detail_2_row border-r-1 pr-1"><?= esc(formatDateTime($post_detail['published_at'])); ?>
         </div>
-        <div class="mr1 post_detail_2_row ">????? Comments</div>
+        <div class="mr1 post_detail_2_row "><?= esc(count($comments)); ?> Comments</div>
     </div>
     <div class="post_content">
         <?= html($post_detail['content']); ?>
@@ -43,18 +43,22 @@
         </div>
     </div>
     <div id="comment_exhibition">
-        <?php for ($i = 0; $i < 3; $i++) : ?>
+        <?php foreach ($comments as $comment) : ?>
             <div class="cmt-card flex-container">
                 <div><img class="cmt-pic" src="images/profile_of_comment.jpeg"></div>
                 <div>
                     <div class="flex-container">
-                        <div class="mr1 border-r-1 pr-1 fw-700">User Name</div>
-                        <div class="mr1 post_detail_2_row pr-1"><small>March 23</small></div>
+                        <div class="mr1 border-r-1 pr-1 fw-700">
+                            <?= esc($user->getUserNameByIdRelatingToComment($comment['userid'])); ?>
+                        </div>
+                        <div class="mr1 post_detail_2_row pr-1">
+                            <small><?= esc(formatDateTime($comment['created_at'])); ?></small>
+                        </div>
                     </div>
-                    <div class="mt1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                    <div class="mt1"><?= html($comment['content']); ?></div>
                 </div>
             </div>
-        <?php endfor; ?>
+        <?php endforeach; ?>
     </div>
     <div id="comment_block">
         <form id="comment_form" action="" method="post">

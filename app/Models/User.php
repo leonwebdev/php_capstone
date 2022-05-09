@@ -236,4 +236,22 @@ class User extends DatabaseQuery
 
         return $stmt->fetch();
     }
+
+    public function getUserNameByIdRelatingToComment(string $id = ''): mixed
+    {
+        $query = "  SELECT *
+                    FROM {$this->table}
+                    WHERE id = :id
+                    AND deleted = 0";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['first_name'] . ' ' .  $result['last_name'];
+    }
 }

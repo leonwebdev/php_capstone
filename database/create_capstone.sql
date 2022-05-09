@@ -81,7 +81,6 @@ CREATE TABLE `comments` (
     `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `postid` BIGINT NOT NULL,
     `userid` BIGINT NOT NULL,
-    `title` VARCHAR(255) NOT NULL,
     `content` TEXT NULL DEFAULT NULL,
     `deleted` BOOL NOT NULL DEFAULT 0,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -163,3 +162,29 @@ UPDATE `posts` SET `content` =
 "<p>Pellesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste minima esse aspernatur modi, dolorem molestiae ullam error veritatis! Consectetur, consequatur. Esse dolores animi modi veritatis sed nihil debitis consequatur quibusdam!</p>
 <p>Aliquam ac lacus nibh. Nullam a posuere turpis, vitae mollis velit. Etiam maximus vitae libero vel blandit. Nulla rutrum velit et augue egestas vestibulum. Proin condimentum maximus sollicilici tu din. Dsddlio veritatis sed nihil xcde ilao.</p>";
+
+INSERT INTO `comments` (
+    `postid`,
+    `userid`,
+    `content`
+    )
+VALUES
+    ("1", "1", "content"),
+    ("1", "1", "content"),
+    ("1", "1", "content"),
+    ("2", "2", "content"),
+    ("2", "2", "content"),
+    ("3", "1", "content"),
+    ("4", "2", "content"),
+    ("5", "1", "content"),
+    ("6", "2", "content"),
+    ("7", "1", "content"),
+    ("8", "2", "content"),
+    ("9", "1", "content"),
+    ("10", "2", "content"),
+    ("11", "1", "content"),
+    ("12", "2", "content")
+;
+
+UPDATE `comments` SET `content` =
+"<p>Lorem ipsum dolor sit amet coisicing elita posuere turpis.</p>";
