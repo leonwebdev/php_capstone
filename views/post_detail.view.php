@@ -12,7 +12,8 @@
     <h1 style="margin-top: 2.5rem;"><?= esc($post_detail['title']); ?></h1>
     <div class="flex-container">
         <div class="mr1 post_detail_2_row border-r-1 pr-1">Leon</div>
-        <div class="mr1 post_detail_2_row border-r-1 pr-1"><?= esc($post_date); ?></div>
+        <div class="mr1 post_detail_2_row border-r-1 pr-1"><?= esc(formatDateTime($post_detail['published_at'])); ?>
+        </div>
         <div class="mr1 post_detail_2_row ">????? Comments</div>
     </div>
     <div class="post_content">

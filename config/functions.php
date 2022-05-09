@@ -149,3 +149,20 @@ function createLogEvent(array $server_info, string $http_respond_code): string
 
     return $event;
 }
+
+/**
+ * format input date-time into 2022-May-7 Format
+ *
+ * @param string $org_date
+ *   input date-time
+ *
+ * @return string
+ *   formatted date like 2022-May-7
+ */
+function formatDateTime(string $org_date = ''): string
+{
+    return date(
+        'Y-M-j',
+        strtotime($org_date)
+    );
+}
