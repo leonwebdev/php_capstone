@@ -1053,7 +1053,8 @@ button:hover {
 }
 /*------------ FOR DEBUG
 -------------------------------------------------- */
-
+/*
 div.main_wrapper div {
-  /* border: 1px solid #c93d3d; */
-}
+  border: 1px solid #c93d3d;
+  }
+*/
