@@ -12,16 +12,6 @@ class Post extends DatabaseQuery
     protected $table = 'posts';
 
     /**
-     * getDbh return the current PDO
-     *
-     * @return  PDO  return the current PDO
-     */
-    public function getDbh()
-    {
-        return self::$dbh;
-    }
-
-    /**
      * create a new post record
      *
      * @param   array  $array  input post info to insert into database
