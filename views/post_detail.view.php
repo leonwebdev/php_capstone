@@ -36,7 +36,7 @@
     <div class="flex-container pd1 category_list">
         <div>
             <?php foreach ($categories as $category) : ?>
-                <div class="post_category"><a href="/?p=post&categoryid=" class="plain_a cat_list_a"><?= esc($category['title']); ?></a></div>
+                <div class="post_category"><a href="/?p=post&categoryid=<?= esc_attr($category['id']) ?>" class="plain_a cat_list_a"><?= esc($category['title']); ?></a></div>
             <?php endforeach; ?>
         </div>
     </div>
