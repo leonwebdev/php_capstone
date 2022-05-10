@@ -178,4 +178,30 @@ class Post extends DatabaseQuery
 
         return $result['title'];
     }
+
+    /**
+     * get Publish Date by post id
+     *
+     * @param string $id post id
+     * @return string the Publish Date of this post
+     */
+    public function getPublishDateById(string $id = ''): string
+    {
+        $query = "  SELECT published_at
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    AND
+                    id = :id
+                    ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['published_at'];
+    }
 }

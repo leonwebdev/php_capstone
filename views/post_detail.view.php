@@ -35,7 +35,9 @@
                         <?= esc($post->getTitleById($num)); ?>
                     </a>
                 </div>
-                <div style="color: #84878b;"><small>April 31</small></div>
+                <div style="color: #84878b;"><small>
+                        <?= esc(formatDateTime($post->getPublishDateById($num))); ?>
+                    </small></div>
             </div>
             <?php if ($key < 2) : ?>
                 <div class="post_recommend_dilimiter"></div>
