@@ -34,6 +34,16 @@ if (!empty($_GET['postid'])) {
     $current_cat_id = $_GET['categoryid'] ?? '';
 
     view('post', compact('title', 'post_details', 'categories', 'current_cat_id', 'cat', 'user'));
+} elseif (!empty($_GET['authorid'])) {
+
+    // new a posts object
+    $posts = new Post($dbh);
+
+    $post_details = $posts->getAllByAuthorId($_GET['authorid']);
+
+    $current_cat_id = $_GET['categoryid'] ?? '';
+
+    view('post', compact('title', 'post_details', 'categories', 'current_cat_id', 'cat', 'user'));
 } elseif (!empty($_GET['search'])) {
 
     // new a posts object

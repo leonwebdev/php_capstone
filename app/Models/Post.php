@@ -90,6 +90,33 @@ class Post extends DatabaseQuery
     }
 
     /**
+     * get All Posts By AuthorId
+     *
+     * @param string $id
+     *   author id
+     *
+     * @return mixed
+     *   all posts
+     */
+    public function getAllByAuthorId(string $id = ''): mixed
+    {
+        $query = "  SELECT *
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    AND
+                    authorid = :authorid
+                    ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':authorid', $id);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    /**
      * get All Posts By Search
      *
      * @param string $search

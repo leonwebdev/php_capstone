@@ -12,14 +12,22 @@
     <h1 style="margin-top: 2.5rem;"><?= esc($post_detail['title']); ?></h1>
     <div class="flex-container">
         <div class="mr1 post_detail_2_row border-r-1 pr-1">
-            <?= esc($user->getUserNameByIdRelatingToPost($post_detail['authorid'])); ?></div>
+            <a href="/?p=post&authorid=<?= esc_attr($post_detail['authorid']); ?>"
+                class="plain_a post_card_a recmd_artical_title">
+                <?= esc($user->getUserNameByIdRelatingToPost($post_detail['authorid'])); ?>
+            </a>
+        </div>
         <div class="mr1 post_detail_2_row border-r-1 pr-1"><?= esc(formatDateTime($post_detail['published_at'])); ?>
         </div>
         <div class="mr1 post_detail_2_row "><?= esc(count($comments)); ?> Comments</div>
     </div>
+    <!-- post detail 2nd Row ---------------------------------------------- -->
+
     <div class="post_content">
         <?= html($post_detail['content']); ?>
     </div>
+    <!-- Post Content Block ----------------------------------------------- -->
+
     <div class="flex-container post_detail_recommand_block">
         <?php for ($i = 0; $i < 3; $i++) : ?>
         <div class="pd1 post_recommend_card">
@@ -35,6 +43,8 @@
         <?php endif; ?>
         <?php endfor; ?>
     </div>
+    <!-- Recommend Article Block ------------------------------------------- -->
+
     <div class="flex-container pd1 category_list">
         <div>
             <?php foreach ($categories as $category) : ?>
@@ -43,6 +53,8 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <!-- Category List Block ----------------------------------------------- -->
+
     <div id="comment_exhibition">
         <?php foreach ($comments as $comment) : ?>
         <div class="cmt-card flex-container">
@@ -61,6 +73,8 @@
         </div>
         <?php endforeach; ?>
     </div>
+    <!-- Comment Exhibition Block ----------------------------------------------- -->
+
     <div id="comment_block">
         <form id="comment_form" action="" method="post">
             <h2>Please Leave Your Comment</h2>
@@ -74,6 +88,8 @@
             <p><button type="submit" class="rm-btn-margin btn-w-fix btn-p-small">Send</button></p>
         </form>
     </div>
+    <!-- Leave a Comment Block ----------------------------------------------- -->
+
 </div>
 
 <?php include __DIR__ . '/inc/footer.inc.php'; ?>

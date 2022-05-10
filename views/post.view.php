@@ -40,7 +40,12 @@
             <div class="pd1">
                 <div class="post-card-2-row flex-container">
                     <div><?= esc(formatDateTime($post_detail['published_at'])); ?></div>
-                    <div><?= esc($user->getUserNameByIdRelatingToPost($post_detail['authorid'])); ?></div>
+                    <div>
+                        <a href="/?p=post&authorid=<?= esc_attr($post_detail['authorid']); ?>"
+                            class="plain_a post_card_a recmd_artical_title">
+                            <?= esc($user->getUserNameByIdRelatingToPost($post_detail['authorid'])); ?>
+                        </a>
+                    </div>
                 </div>
                 <div class=" mt1">
                     <a href="/?p=post&postid=<?= esc_attr($post_detail['id']); ?>"
