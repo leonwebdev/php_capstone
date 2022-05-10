@@ -46,7 +46,7 @@
                     </div>
                     <div class="post_summary mt1"><?= esc($post_detail['summary']); ?></div>
                     <div class="post_category mt1">
-                        <a href="/?p=post&categoryid=" class="plain_a cat_list_a">category</a>
+                        <a href="/?p=post&categoryid=<?= esc_attr($post_detail['categoryid']); ?>" class="plain_a cat_list_a"><?= esc($cat->getCategoryTitleByPostId($post_detail['categoryid'])); ?></a>
                     </div>
                 </div>
             </div>

@@ -11,6 +11,15 @@ class Comment extends DatabaseQuery
 {
     protected $table = 'comments';
 
+    /**
+     * get all Comments By this Postid
+     *
+     * @param string $post_id
+     *   post id
+     *
+     * @return mixed
+     *   All comments relating to this post
+     */
     public function getCommentByPostid(string $post_id = ''): mixed
     {
         $query = "  SELECT *

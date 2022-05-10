@@ -10,4 +10,31 @@ use \App\Models\DatabaseQuery;
 class Category extends DatabaseQuery
 {
     protected $table = 'categories';
+
+    /**
+     * get Category Title By this Post Id
+     *
+     * @param string $id
+     *   post id
+     *
+     * @return string
+     *   category title
+     */
+    public function getCategoryTitleByPostId(string $id = ''): string
+    {
+        $query = "  SELECT *
+                    FROM {$this->table}
+                    WHERE id = :id
+                    AND deleted = 0";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['title'];
+    }
 }

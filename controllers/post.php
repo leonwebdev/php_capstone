@@ -33,5 +33,5 @@ if (!empty($_GET['postid'])) {
 
     $current_cat_id = $_GET['categoryid'] ?? '';
 
-    view('post', compact('title', 'post_details', 'categories', 'current_cat_id'));
+    view('post', compact('title', 'post_details', 'categories', 'current_cat_id', 'cat'));
 }

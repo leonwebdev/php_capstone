@@ -237,6 +237,15 @@ class User extends DatabaseQuery
         return $stmt->fetch();
     }
 
+    /**
+     * get User Name By Id Relating To this Comment
+     *
+     * @param string $id
+     *   comment id
+     *
+     * @return mixed
+     *   author first+last name
+     */
     public function getUserNameByIdRelatingToComment(string $id = ''): mixed
     {
         $query = "  SELECT *
