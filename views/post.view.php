@@ -29,7 +29,7 @@
     </div>
     <!--category list-->
 
-    <div class=" flex-container pd1 post_list">
+    <div class="grid-container grid_post_list post_list">
         <?php foreach ($post_details as $post_detail) : ?>
             <div class="post_card s-box">
                 <div><a href="/?p=post&postid=<?= esc_attr($post_detail['id']); ?>">

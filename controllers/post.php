@@ -24,6 +24,17 @@ if (!empty($_GET['postid'])) {
         'post_detail',
         compact('title', 'post_detail', 'comments', 'user', 'categories')
     );
+} elseif (!empty($_GET['categoryid'])) {
+
+    // new a posts object
+    $posts = new Post($dbh);
+
+    $post_details = $posts->getAllByCategoryId($_GET['categoryid']);
+
+    $current_cat_id = $_GET['categoryid'] ?? '';
+
+    view('post', compact('title', 'post_details', 'categories', 'current_cat_id', 'cat'));
+
 } else {
 
     // new a posts object

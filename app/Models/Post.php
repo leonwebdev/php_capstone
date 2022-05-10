@@ -60,4 +60,22 @@ class Post extends DatabaseQuery
 
         return $id;
     }
+
+    public function getAllByCategoryId(string $id = ''): mixed
+    {
+        $query = "  SELECT *
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    AND
+                    categoryid = :categoryid
+                    ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':categoryid', $id);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
