@@ -6,16 +6,16 @@ if ('POST' !== $_SERVER['REQUEST_METHOD']) {
 }
 
 // Insert New Comment into Database
+$last_insrt_id = $cmt->create($_GET['postid'], $_SESSION['user_id'], $_POST['content']) ?? null;
 
-if (/* insert new comment failed */ ) {
+if (!$last_insrt_id) {
 
-    $_SESSION['flash']['error'] = 'Sorry, no user found or wrong password, please try again.';
-    header('Location:/?p=login');
+    $_SESSION['flash']['error'] = 'Sorry, failed to leave this comment. Please try again.';
+    header('Location:/?p=profile');
     die;
 }
 
 session_regenerate_id();
-$_SESSION['flash']['success'] = 'Welcome! ' . $user_try_to_login['first_name'] . ' ' . $user_try_to_login['last_name'] . ', you are logged in!';
-$_SESSION['user_id'] = $user_try_to_login['id'];
+$_SESSION['flash']['success'] = 'Congrats! You Left A New Comment Successfully!';
 header('Location:/?p=profile');
 die;

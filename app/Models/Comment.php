@@ -64,4 +64,41 @@ class Comment extends DatabaseQuery
 
         return $stmt->fetchAll();
     }
+
+    /**
+     * Insert a new comment into database
+     *
+     * @param string $postid post id to insert a new comment
+     * @param string $userid user id who want to insert a new comment
+     * @param string $content the comment content
+     * @return string last insert id
+     */
+    public function create(string $postid = '', string $userid = '', string $content = ''): string
+    {
+        $query = "INSERT INTO {$this->table}
+                    (
+                        postid,
+                        userid,
+                        content
+                    )
+                    VALUES
+                    (
+                        :postid,
+                        :userid,
+                        :content
+                    )
+        ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':postid', $postid);
+        $stmt->bindValue(':userid', $userid);
+        $stmt->bindValue(':content', $content);
+
+        $stmt->execute();
+
+        $id = self::$dbh->lastInsertId();
+
+        return $id;
+    }
 }
