@@ -54,11 +54,11 @@ abstract class DatabaseQuery
     /**
      * getOne return user info by user id
      *
-     * @param   int  $id  the user id that will be use to query
+     * @param   int|string  $id  the user id that will be use to query
      *
      * @return  mixed       return user info by user id or FALSE if no data found
      */
-    public function getOne(int $id): mixed
+    public function getOne(int|string $id): mixed
     {
         $query = "  SELECT *
                     FROM {$this->table}

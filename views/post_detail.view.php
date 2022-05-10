@@ -57,7 +57,7 @@
 
     <div id="comment_exhibition">
         <?php foreach ($comments as $comment) : ?>
-            <div class="cmt-card flex-container">
+            <div id="<?= esc_attr('cmt' . $comment['id']); ?>" class="cmt-card flex-container">
                 <div><img class="cmt-pic" src="images/profile_of_comment.jpeg"></div>
                 <div>
                     <div class="flex-container">

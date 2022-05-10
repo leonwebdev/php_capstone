@@ -37,4 +37,31 @@ class Comment extends DatabaseQuery
 
         return $stmt->fetchAll();
     }
+
+    /**
+     * get all Comments By this User-id
+     *
+     * @param string $user_id
+     *   user id
+     *
+     * @return mixed
+     *   All comments relating to this user
+     */
+    public function getCommentsByUserid(string $user_id = ''): mixed
+    {
+        $query = "  SELECT *
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                        AND
+                        userid = :userid
+                    ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':userid', $user_id);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

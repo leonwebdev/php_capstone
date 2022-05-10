@@ -171,8 +171,8 @@ INSERT INTO `comments` (
 VALUES
     ("1", "1", "content"),
     ("1", "1", "content"),
-    ("1", "1", "content"),
-    ("2", "2", "content"),
+    ("1", "2", "content"),
+    ("2", "1", "content"),
     ("2", "2", "content"),
     ("3", "1", "content"),
     ("4", "2", "content"),
