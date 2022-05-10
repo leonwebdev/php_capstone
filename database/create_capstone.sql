@@ -116,7 +116,8 @@ INSERT INTO `users` (
     )
     VALUES
 ('Lihang','Yao','123 Good Street','Winnipeg','R3C 5W7','Manitoba','Canada','123-123-1234','admin@gardener.com','$2y$10$ZzSz5O1q/3Zit9njCr4LNOnYV6BDcbbWPWPrQcmc1mzp8R0EqwNwG','1'),
-('Chris','Brown','73 Nice Street','Ottawa','R3G 9W3','Ontario','Canada','125-521-1764','chris@gardener.com','$2y$10$ZzSz5O1q/3Zit9njCr4LNOnYV6BDcbbWPWPrQcmc1mzp8R0EqwNwG','0');
+('Chris','Brown','73 Nice Street','Ottawa','R3G 9W3','Ontario','Canada','125-521-1764','chris@gardener.com','$2y$10$ZzSz5O1q/3Zit9njCr4LNOnYV6BDcbbWPWPrQcmc1mzp8R0EqwNwG','0'),
+('Jack','Smith','68 Mary Ave','Calgary','D3E 7F5','Alberta','Canada','159-874-3258','jack@gardener.com','$2y$10$ZzSz5O1q/3Zit9njCr4LNOnYV6BDcbbWPWPrQcmc1mzp8R0EqwNwG','0');
 
 INSERT INTO `categories` (`title`)
 VALUES

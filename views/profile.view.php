@@ -38,7 +38,7 @@ include __DIR__ . '/inc/header.inc.php';
         <div style="border-left: 1.5px solid #dadada; padding-left:2em;flex-grow:1;">
             <h2 style="margin-top: 0;">Your Comments</h2>
 
-            <?php if (empty($_SESSION['user_id'])) : ?>
+            <?php if (0 == count($cmt_details)) : ?>
                 <p>You have no comments yet. Go to
                     <a href="/?p=post" class="plain_a post_card_a fw-700 recmd_artical_title">Posts.</a>
                 </p>
