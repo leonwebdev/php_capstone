@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use \App\Models\DatabaseQuery;
+use \PDO;
 
 /**
  * Post -extend from DatabaseQuery
@@ -61,6 +62,15 @@ class Post extends DatabaseQuery
         return $id;
     }
 
+    /**
+     * get All Posts By CategoryId
+     *
+     * @param string $id
+     *   category id
+     *
+     * @return mixed
+     *   all posts
+     */
     public function getAllByCategoryId(string $id = ''): mixed
     {
         $query = "  SELECT *
@@ -73,6 +83,43 @@ class Post extends DatabaseQuery
         $stmt = self::$dbh->prepare($query);
 
         $stmt->bindValue(':categoryid', $id);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * get All Posts By Search
+     *
+     * @param string $search
+     *   string to search
+     *
+     * @return mixed
+     *   All Posts By Search
+     */
+    public function getAllBySearch(string $search = ''): mixed
+    {
+        $query = "  SELECT DISTINCT {$this->table}.*
+
+                    FROM {$this->table}
+                    LEFT JOIN users ON {$this->table}.authorid = users.id
+                    LEFT JOIN categories ON {$this->table}.categoryid = categories.id
+                    LEFT JOIN comments ON {$this->table}.id = comments.postid
+
+                    WHERE {$this->table}.deleted = 0
+                    AND (
+                    {$this->table}.title LIKE :search OR
+                    {$this->table}.summary LIKE :search OR
+                    users.first_name LIKE :search OR
+                    users.last_name LIKE :search OR
+                    categories.title LIKE :search OR
+                    comments.content LIKE :search
+                    )";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
 
         $stmt->execute();
 
