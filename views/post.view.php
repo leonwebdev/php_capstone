@@ -31,6 +31,8 @@
     <!--category list-->
 
     <div class="grid-container grid_post_list post_list">
+
+        <?php if (!empty($post_details)) : ?>
         <?php foreach ($post_details as $post_detail) : ?>
         <div class="post_card s-box">
             <div><a href="/?p=post&postid=<?= esc_attr($post_detail['id']); ?>">
@@ -59,6 +61,9 @@
             </div>
         </div>
         <?php endforeach; ?>
+        <?php else : ?>
+        <h1 style="width: max-content;">There is no post found...</h1>
+        <?php endif; ?>
 
     </div>
     <!--All post list view-->
