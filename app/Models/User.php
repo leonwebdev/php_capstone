@@ -219,9 +219,9 @@ class User extends DatabaseQuery
      *   the actual email to query
      *
      * @return array
-     *   array contains user info
+     *   array contains user info, false if no record found
      */
-    public function getOneByEmail(string $field, string $email): array
+    public function getOneByEmail(string $field, string $email): array|bool
     {
         $query = "  SELECT *
                     FROM {$this->table}
