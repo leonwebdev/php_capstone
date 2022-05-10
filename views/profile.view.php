@@ -37,39 +37,42 @@ include __DIR__ . '/inc/header.inc.php';
         <!-- User Info ------------------------------------------------------------------------- -->
         <div style="border-left: 1.5px solid #dadada; padding-left:2em;flex-grow:1;">
             <h2 style="margin-top: 0;">Your Comments</h2>
-            <p>You have no comments yet. Go to
-                <a href="/?p=post" class="plain_a post_card_a fw-700 recmd_artical_title">Posts.</a>
-            </p>
-            <!-- If No Comment ----------------------------------------------------------------- -->
 
-            <?php foreach ($cmt_details as $key => $cmt_detail) : ?>
+            <?php if (empty($_SESSION['user_id'])) : ?>
+                <p>You have no comments yet. Go to
+                    <a href="/?p=post" class="plain_a post_card_a fw-700 recmd_artical_title">Posts.</a>
+                </p>
+                <!-- If No Comment ----------------------------------------------------------------- -->
+            <?php else : ?>
+                <?php foreach ($cmt_details as $key => $cmt_detail) : ?>
 
-                <div class="flex-container" style="width: 100%;margin-bottom:2em;">
-                    <div class="profile_li">
-                        <div class="profile_li_num"><?= esc($key + 1); ?></div>
-                    </div>
-                    <div style="flex-grow: 1;">
-                        <div style="color: #84878b;display:inline-block;">
-                            <small><?= esc(formatDateTime($cmt_detail['created_at'])); ?></small>
+                    <div class="flex-container" style="width: 100%;margin-bottom:2em;">
+                        <div class="profile_li">
+                            <div class="profile_li_num"><?= esc($key + 1); ?></div>
                         </div>
-                        <div style="display:inline-block;"><small>on</small>
-                            <a href="/?p=post&postid=<?= esc_attr($cmt_detail['postid'] . '#cmt' . $cmt_detail['id']); ?>" class="plain_a post_card_a fw-700 recmd_artical_title">
-                                <?= esc($post->getTitleById($cmt_detail['postid'])); ?></a>
+                        <div style="flex-grow: 1;">
+                            <div style="color: #84878b;display:inline-block;">
+                                <small><?= esc(formatDateTime($cmt_detail['created_at'])); ?></small>
+                            </div>
+                            <div style="display:inline-block;"><small>on</small>
+                                <a href="/?p=post&postid=<?= esc_attr($cmt_detail['postid'] . '#cmt' . $cmt_detail['id']); ?>" class="plain_a post_card_a fw-700 recmd_artical_title">
+                                    <?= esc($post->getTitleById($cmt_detail['postid'])); ?></a>
+                            </div>
+                            <div>
+                                <a href="/?p=post&postid=<?= esc_attr($cmt_detail['postid'] . '#cmt' . $cmt_detail['id']); ?>" class="plain_a post_card_a recmd_artical_title" style="text-align: start;color:#84878b">
+                                    <p><em><small><?= html($cmt_detail['content']); ?></small></em></p>
+                                </a>
+                            </div>
                         </div>
                         <div>
-                            <a href="/?p=post&postid=<?= esc_attr($cmt_detail['postid'] . '#cmt' . $cmt_detail['id']); ?>" class="plain_a post_card_a recmd_artical_title" style="text-align: start;color:#84878b">
-                                <p><em><small><?= html($cmt_detail['content']); ?></small></em></p>
-                            </a>
+                            <form method="POST" action="/">
+                                <input type="hidden" name="p" value="post">
+                                <button type="submit" style="background-color: #d42b06;" class="rm-btn-margin btn-w-fix btn-p-xsmall rm-btn-box-shadow">Delete</button>
+                            </form>
                         </div>
                     </div>
-                    <div>
-                        <form method="POST" action="/">
-                            <input type="hidden" name="p" value="post">
-                            <button type="submit" style="background-color: #d42b06;" class="rm-btn-margin btn-w-fix btn-p-xsmall rm-btn-box-shadow">Delete</button>
-                        </form>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
         <!-- Comment Block ------------------------------------------------------------------------- -->
 

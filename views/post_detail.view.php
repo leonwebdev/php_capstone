@@ -76,14 +76,15 @@
     <!-- Comment Exhibition Block ----------------------------------------------- -->
 
     <div id="comment_block">
-        <form id="comment_form" action="" method="post">
+        <form id="comment_form" method="post">
             <h2>Please Leave Your Comment</h2>
             <p><a href="/?p=login" class="plain_a post_card_a fw-700 recmd_artical_title">Login</a> or
                 <a href="/?p=register" class="plain_a post_card_a fw-700 recmd_artical_title">Register</a> to leave a
                 comment.
             </p>
             <div>
-                <textarea name="content" id="textarea_comment"></textarea>
+                <textarea name="content" id="textarea_comment"><?php //= esc($post['content']);
+                                                                ?></textarea>
             </div>
             <p><button type="submit" class="rm-btn-margin btn-w-fix btn-p-small">Send</button></p>
         </form>
