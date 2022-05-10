@@ -241,12 +241,39 @@ class User extends DatabaseQuery
      * get User Name By Id Relating To this Comment
      *
      * @param string $id
-     *   comment id
+     *   user_id of this comment
      *
      * @return mixed
      *   author first+last name
      */
     public function getUserNameByIdRelatingToComment(string $id = ''): mixed
+    {
+        $query = "  SELECT *
+                    FROM {$this->table}
+                    WHERE id = :id
+                    AND deleted = 0";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['first_name'] . ' ' .  $result['last_name'];
+    }
+
+    /**
+     * get User Name By Id Relating To this Post
+     *
+     * @param string $id
+     *   author_id of this post
+     *
+     * @return mixed
+     *   author first+last name
+     */
+    public function getUserNameByIdRelatingToPost(string $id = ''): mixed
     {
         $query = "  SELECT *
                     FROM {$this->table}

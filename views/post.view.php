@@ -40,7 +40,7 @@
             <div class="pd1">
                 <div class="post-card-2-row flex-container">
                     <div><?= esc(formatDateTime($post_detail['published_at'])); ?></div>
-                    <div>Leon</div>
+                    <div><?= esc($user->getUserNameByIdRelatingToPost($post_detail['authorid'])); ?></div>
                 </div>
                 <div class=" mt1">
                     <a href="/?p=post&postid=<?= esc_attr($post_detail['id']); ?>"
