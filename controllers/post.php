@@ -18,11 +18,15 @@ if (!empty($_GET['postid'])) {
 
     $post_detail = $post->getOne($_GET['postid']);
 
+    $total_of_posts = count($post->getAll());
+
+    $three_random_num = getRandom3NumExceptOne(1, $total_of_posts, $_GET['postid']);
+
     $comments = $cmt->getCommentByPostid($post_detail['id']);
 
     view(
         'post_detail',
-        compact('title', 'post_detail', 'comments', 'user', 'categories')
+        compact('title', 'post_detail', 'comments', 'user', 'post', 'categories', 'three_random_num')
     );
 } elseif (!empty($_GET['categoryid'])) {
 

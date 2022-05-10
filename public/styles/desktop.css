@@ -857,7 +857,7 @@ button:hover {
 }
 
 .post_recommend_card {
-  width: fit-content;
+  width: 12em;
 }
 
 .post_recommend_dilimiter {

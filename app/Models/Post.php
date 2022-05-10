@@ -152,4 +152,30 @@ class Post extends DatabaseQuery
 
         return $stmt->fetchAll();
     }
+
+    /**
+     * get title by post id
+     *
+     * @param string $id post id
+     * @return string the title of this post
+     */
+    public function getTitleById(string $id = ''): string
+    {
+        $query = "  SELECT title
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    AND
+                    id = :id
+                    ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['title'];
+    }
 }
