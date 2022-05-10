@@ -89,8 +89,7 @@
             <?php else : ?>
 
                 <div>
-                    <textarea name="content" id="textarea_comment"><?php //= esc($post['content']);
-                                                                    ?></textarea>
+                    <textarea name="content" id="textarea_comment" placeholder="Leave a comment about this post..."><?= esc($_POST['content'] ?? '');  ?></textarea>
                 </div>
                 <p><button type="submit" class="rm-btn-margin btn-w-fix btn-p-small">Send</button></p>
 

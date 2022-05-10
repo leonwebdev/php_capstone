@@ -1019,12 +1019,15 @@ button:hover {
 }
 
 #textarea_comment {
-  border-radius: 0.5em;
-  width: 50em;
-  height: 10em;
+  border-radius: 0.5rem;
+  max-width: 50rem;
+  min-width: 40rem;
+  min-height: 10rem;
   resize: none;
   padding: 1em;
   border-color: #84878b;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
 }
 
 #comment_exhibition {
