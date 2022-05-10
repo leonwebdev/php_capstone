@@ -76,7 +76,7 @@
     <!-- Comment Exhibition Block ----------------------------------------------- -->
 
     <div id="comment_block">
-        <form id="comment_form" method="post">
+        <form id="comment_form" action="#comment_block" method="post">
             <h2>Please Leave Your Comment</h2>
 
             <?php if (empty($_SESSION['user_id'])) : ?>
@@ -91,6 +91,9 @@
                 <div>
                     <textarea name="content" id="textarea_comment" placeholder="Leave a comment about this post..."><?= esc($_POST['content'] ?? '');  ?></textarea>
                 </div>
+                <p>
+                    <span class="form_validate_error"><?= esc($errors['content'][0] ?? '') ?></span>
+                </p>
                 <p><button type="submit" class="rm-btn-margin btn-w-fix btn-p-small">Send</button></p>
 
             <?php endif; ?>

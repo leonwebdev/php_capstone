@@ -6,6 +6,12 @@ use App\Models\Post;
 
 $title = 'Post';
 
+// Get flash message
+$flash = $_SESSION['flash'] ?? [];
+unset($_SESSION['flash']);
+
+$errors = $errors ?? [];
+
 $cat = new Category($dbh);
 $cmt = new Comment($dbh);
 
@@ -24,9 +30,27 @@ if (!empty($_GET['postid'])) {
 
     $comments = $cmt->getCommentByPostid($post_detail['id']);
 
+    if ('POST' === $_SERVER['REQUEST_METHOD']) {
+
+        /* STEP 1 - VALIDATE ALL FIELDS
+       ---------------------------------------------------- */
+
+        require __DIR__ . './../modules/validate_comment.php';
+
+        /* STEP 2 -- IF NO ERRORS, REDIRECTE TO User Profile
+        -------------------------------------------------------- */
+
+        if (
+            count($errors) == 0
+        ) {
+
+            require __DIR__ . './../modules/process_comment.php';
+        }
+    }
+
     view(
         'post_detail',
-        compact('title', 'post_detail', 'comments', 'user', 'post', 'categories', 'three_random_num')
+        compact('title', 'errors', 'post_detail', 'comments', 'user', 'post', 'categories', 'three_random_num')
     );
 } elseif (!empty($_GET['categoryid'])) {
 
