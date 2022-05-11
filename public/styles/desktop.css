@@ -966,6 +966,14 @@ button:hover {
   margin-left: 1em !important;
 }
 
+.my-1 {
+  margin: 1em 0 !important;
+}
+
+.dspl-blk {
+  display: block;
+}
+
 .cat_list_a {
   padding: 0;
   color: rgb(11, 57, 5);
