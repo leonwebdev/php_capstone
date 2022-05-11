@@ -16,6 +16,11 @@ require __DIR__ . '/../../../vendor/autoload.php';
 // ----- USE -----------------------------------
 // ---------------------------------------------
 use \App\Models\User;
+use \App\Models\Post;
+use \App\Models\Category;
+use \App\Models\Comment;
+use \App\Models\DatabaseQuery;
+use \App\Models\Validator;
 use \App\Lib\DatabaseLogger;
 use \App\Lib\FileLogger;
 
@@ -28,6 +33,9 @@ $fileLogger = new FileLogger($fh);
 // ----- new User Object to query info ---------
 // ---------------------------------------------
 $user = new User($dbh);
+$posts = new Post($dbh);
+$cat = new Category($dbh);
+$cmt = new Comment($dbh);
 
 // ----- Get flash message ---------------------
 // ---------------------------------------------

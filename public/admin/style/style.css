@@ -16,3 +16,11 @@
     padding-left: 1em;
     max-width: 350px;
   }
+
+.w-fit-content{
+    width: fit-content;
+}
+
+.w-min-content{
+    width: min-content;
+}
