@@ -24,23 +24,23 @@
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link <?= ('Dashboard | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Dashboard</a>
+                        <a class="nav-link <?= ('Dashboard | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="./index.php">Dashboard</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= ('Posts | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Posts</a>
+                        <a class="nav-link <?= ('Posts | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="./posts.php">Posts</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= ('Categories | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Categories</a>
+                        <a class="nav-link <?= ('Categories | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="./categories.php">Categories</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= ('Comments | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Comments</a>
+                        <a class="nav-link <?= ('Comments | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="./comments.php">Comments</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= ('Users | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Users</a>
+                        <a class="nav-link <?= ('Users | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="./users.php">Users</a>
                     </li>
 
                     <li class="nav-item"><a class="nav-link fw-bold text-danger" href="#">Logout</a></li>
