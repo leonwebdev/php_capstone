@@ -58,7 +58,9 @@
     <div id="comment_exhibition">
         <?php foreach ($comments as $comment) : ?>
             <div id="<?= esc_attr('cmt' . $comment['id']); ?>" class="cmt-card flex-container">
-                <div><img class="cmt-pic" src="images/profile_of_comment.jpeg"></div>
+                <div>
+                    <img class="cmt-pic" src="images/profile_of_comment.jpeg">
+                </div>
                 <div>
                     <div class="flex-container">
                         <div class="mr1 border-r-1 pr-1 fw-700">
@@ -68,7 +70,7 @@
                             <small><?= esc(formatDateTime($comment['created_at'])); ?></small>
                         </div>
                     </div>
-                    <div class="mt1"><?= html($comment['content']); ?></div>
+                    <div class="mt1 max-w-30"><?= html($comment['content']); ?></div>
                 </div>
             </div>
         <?php endforeach; ?>

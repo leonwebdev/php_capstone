@@ -8,15 +8,15 @@ include __DIR__ . '/inc/header.inc.php';
     <h1>Your <?= esc($title) ?></h1>
 
     <?php if (!empty($flash['success'])) : ?>
-        <div class="flash success">
-            <?= esc($flash['success']) ?>
-        </div>
+    <div class="flash success">
+        <?= esc($flash['success']) ?>
+    </div>
     <?php endif; ?>
 
     <?php if (!empty($flash['error'])) : ?>
-        <div class="flash error">
-            <?= esc($flash['error']) ?>
-        </div>
+    <div class="flash error">
+        <?= esc($flash['error']) ?>
+    </div>
     <?php endif; ?>
 
     <div class="flex-container" style="width:100%; margin: 2rem 0;">
@@ -39,42 +39,47 @@ include __DIR__ . '/inc/header.inc.php';
             <h2 style="margin-top: 0;">Your Comments</h2>
 
             <?php if (0 == count($cmt_details)) : ?>
-                <p>You have no comments yet. Go to
-                    <a href="/?p=post" class="plain_a post_card_a fw-700 recmd_artical_title">Posts.</a>
-                </p>
-                <!-- If No Comment ----------------------------------------------------------------- -->
+            <p>You have no comments yet. Go to
+                <a href="/?p=post" class="plain_a post_card_a fw-700 recmd_artical_title">Posts.</a>
+            </p>
+            <!-- If No Comment ----------------------------------------------------------------- -->
             <?php else : ?>
-                <?php foreach ($cmt_details as $key => $cmt_detail) : ?>
+            <?php foreach ($cmt_details as $key => $cmt_detail) : ?>
 
-                    <div class="flex-container" style="width: 100%;margin-bottom:2em;">
-                        <div class="profile_li">
-                            <div class="profile_li_num"><?= esc($key + 1); ?></div>
-                        </div>
-                        <div style="flex-grow: 1;">
-                            <div style="color: #84878b;display:inline-block;">
-                                <small><?= esc(formatDateTime($cmt_detail['created_at'])); ?></small>
-                            </div>
-                            <div style="display:inline-block;"><small>on</small>
-                                <a href="/?p=post&postid=<?= esc_attr($cmt_detail['postid'] . '#cmt' . $cmt_detail['id']); ?>" class="plain_a post_card_a fw-700 recmd_artical_title">
-                                    <?= esc($post->getTitleById($cmt_detail['postid'])); ?></a>
-                            </div>
-                            <div>
-                                <a href="/?p=post&postid=<?= esc_attr($cmt_detail['postid'] . '#cmt' . $cmt_detail['id']); ?>" class="plain_a post_card_a recmd_artical_title" style="text-align: start;color:#84878b">
-                                    <p><em><small><?= html($cmt_detail['content']); ?></small></em></p>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Comment Content Block --------------------------------------------------- -->
-                        <div>
-                            <form method="POST">
-                                <input type="hidden" name="p" value="post">
-                                <input type="hidden" name="comment_id" value="<?= esc_attr($cmt_detail['id']); ?>">
-                                <button type="submit" style="background-color: #d42b06;" class="rm-btn-margin btn-w-fix btn-p-xsmall rm-btn-box-shadow">Delete</button>
-                            </form>
-                        </div>
-                        <!-- Comment Delete Block --------------------------------------------------- -->
+            <div class="flex-container" style="width: 100%;margin-bottom:2em;">
+                <div class="profile_li">
+                    <div class="profile_li_num"><?= esc($key + 1); ?></div>
+                </div>
+                <div style="flex-grow: 1;">
+                    <div style="color: #84878b;display:inline-block;">
+                        <small><?= esc(formatDateTime($cmt_detail['created_at'])); ?></small>
                     </div>
-                <?php endforeach; ?>
+                    <div style="display:inline-block;"><small>on</small>
+                        <a href="/?p=post&postid=<?= esc_attr($cmt_detail['postid'] . '#cmt' . $cmt_detail['id']); ?>"
+                            class="plain_a post_card_a fw-700 recmd_artical_title">
+                            <?= esc($post->getTitleById($cmt_detail['postid'])); ?></a>
+                    </div>
+                    <div>
+                        <a href="/?p=post&postid=<?= esc_attr($cmt_detail['postid'] . '#cmt' . $cmt_detail['id']); ?>"
+                            class="plain_a post_card_a recmd_artical_title" style="text-align: start;color:#84878b">
+                            <p style="max-width: 25rem;">
+                                <em><small><?= html($cmt_detail['content']); ?></small></em>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <!-- Comment Content Block --------------------------------------------------- -->
+                <div>
+                    <form method="POST">
+                        <input type="hidden" name="p" value="post">
+                        <input type="hidden" name="comment_id" value="<?= esc_attr($cmt_detail['id']); ?>">
+                        <button type="submit" style="background-color: #d42b06;"
+                            class="rm-btn-margin btn-w-fix btn-p-xsmall rm-btn-box-shadow">Delete</button>
+                    </form>
+                </div>
+                <!-- Comment Delete Block --------------------------------------------------- -->
+            </div>
+            <?php endforeach; ?>
             <?php endif; ?>
         </div>
         <!-- Comment Card Block ------------------------------------------------- -->

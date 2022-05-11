@@ -1006,6 +1006,10 @@ button:hover {
   font-weight: 700;
 }
 
+.max-w-30 {
+  max-width: 30rem;
+}
+
 .recmd_artical_title:hover {
   color: #63c617;
 }
@@ -1033,11 +1037,13 @@ button:hover {
 #comment_exhibition {
   margin: 2.5em 0;
   border-left: 0.3rem solid #dadada;
-  padding-left: 1.5rem;
+  padding-left: 1rem;
 }
 
 .cmt-card {
   margin: 1rem 0;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
 }
 
 .cmt-pic {
