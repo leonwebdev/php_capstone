@@ -10,8 +10,9 @@ $title = 'Categories | Administration';
 
 /*--------------------------------------------------------------------------*/
 
-// ----- Get recent ten log entries --------------------
-$recent_ten_log_entries = $databaseLogger->getRecentTenEntries();
+$cat_dtls = $cat->getAll();
+
+$cat_dtls = array_reverse($cat_dtls);
 
 include __DIR__ . '/inc/header.inc.php';
 
@@ -32,17 +33,18 @@ include __DIR__ . '/inc/header.inc.php';
     <div class="row">
         <h1 class="mb-5"><?= esc($title); ?></h1>
         <div class="main col-12">
-            <h2>Recent Log Entries</h2>
 
-            <table id="log" class="table table-striped table-bordered">
+            <table id="admin_categories" class="table table-striped table-bordered">
                 <tr>
-                    <th>date/time | http status | request method | request URI | User Browser Info</th>
+                    <th>Category ID</th>
+                    <th>Title</th>
+                    <th>Create Date</th>
                 </tr>
-                <?php foreach ($recent_ten_log_entries as $key => $value) : ?>
+                <?php foreach ($cat_dtls as $key => $cat_dtl) : ?>
                     <tr>
-                        <td>
-                            <small><?= esc($value['event']) ?></small>
-                        </td>
+                        <th><?= esc($cat_dtl['id']) ?></th>
+                        <td><?= esc($cat_dtl['title']) ?></td>
+                        <td><?= esc($cat_dtl['created_at']) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

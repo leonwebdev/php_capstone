@@ -10,8 +10,9 @@ $title = 'Comments | Administration';
 
 /*--------------------------------------------------------------------------*/
 
-// ----- Get recent ten log entries --------------------
-$recent_ten_log_entries = $databaseLogger->getRecentTenEntries();
+$cmt_dtls = $cmt->getAll();
+
+$cmt_dtls = array_reverse($cmt_dtls);
 
 include __DIR__ . '/inc/header.inc.php';
 
@@ -32,17 +33,22 @@ include __DIR__ . '/inc/header.inc.php';
     <div class="row">
         <h1 class="mb-5"><?= esc($title); ?></h1>
         <div class="main col-12">
-            <h2>Recent Log Entries</h2>
 
-            <table id="log" class="table table-striped table-bordered">
+            <table id="admin_comments" class="table table-striped table-bordered">
                 <tr>
-                    <th>date/time | http status | request method | request URI | User Browser Info</th>
+                    <th>Comment ID</th>
+                    <th>Author</th>
+                    <th>At This Post</th>
+                    <th>Content</th>
+                    <th>Create Date</th>
                 </tr>
-                <?php foreach ($recent_ten_log_entries as $key => $value) : ?>
+                <?php foreach ($cmt_dtls as $key => $cmt_dtl) : ?>
                     <tr>
-                        <td>
-                            <small><?= esc($value['event']) ?></small>
-                        </td>
+                        <th><?= esc($cmt_dtl['id']) ?></th>
+                        <td><?= esc($user->getUserNameByIdRelatingToComment($cmt_dtl['userid'])) ?></td>
+                        <td><?= esc($posts->getTitleById($cmt_dtl['postid'])) ?></td>
+                        <td><?= html($cmt_dtl['content']) ?></td>
+                        <td><?= esc($cmt_dtl['created_at']) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
