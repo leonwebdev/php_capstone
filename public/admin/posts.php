@@ -12,6 +12,8 @@ $title = 'Posts | Administration';
 
 $post_dtls = $posts->getAll();
 
+$post_dtls = array_reverse($post_dtls);
+
 include __DIR__ . '/inc/header.inc.php';
 
 ?><div class="content container mt-5 mb-5">
@@ -44,7 +46,10 @@ include __DIR__ . '/inc/header.inc.php';
                         <th><?= esc($post_dtl['id']) ?></th>
                         <td><?= esc($post_dtl['title']) ?></td>
                         <td><?= esc($post_dtl['created_at']) ?></td>
-                        <td>button</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary me-2" href="">Edit</a>
+                            <a class="btn btn-sm btn-danger" href="">Delete</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
