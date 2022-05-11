@@ -14,7 +14,7 @@ include __DIR__ . '/inc/header.inc.php';
     <h1><?= esc($title) ?></h1>
 
     <form method="post" novalidate>
-
+        <input type="hidden" name="csrf_token" value="<?=csrf()?>" />
         <input type="hidden" name="id" value="<?= esc($_POST['id'] ?? '') ?>">
 
         <p>
@@ -85,7 +85,8 @@ include __DIR__ . '/inc/header.inc.php';
 
         <p>
             <label for="subscribe_to_newsletter">Subscribe to newsletter</label>
-            <input type="checkbox" name="subscribe_to_newsletter" value="<?= esc($_POST['subscribe_to_newsletter'] ?? 1) ?>">
+            <input type="checkbox" name="subscribe_to_newsletter"
+                value="<?= esc($_POST['subscribe_to_newsletter'] ?? 1) ?>">
         </p>
 
         <p><button type="submit" style="margin-left: 180px;">Submit</button></p>

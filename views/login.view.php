@@ -24,6 +24,7 @@ include __DIR__ . '/inc/header.inc.php';
     <?php endif; ?>
 
     <form method="post" novalidate>
+        <input type="hidden" name="csrf_token" value="<?=csrf()?>" />
         <p>
             <label for="email">Email</label>
             <input type="text" name="email" value="<?= esc($_POST['email'] ?? '') ?>">

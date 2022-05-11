@@ -84,6 +84,7 @@
 
     <div id="comment_block">
         <form id="comment_form" action="#comment_block" method="post">
+            <input type="hidden" name="csrf_token" value="<?=csrf()?>" />
             <h2>Please Leave Your Comment</h2>
 
             <?php if (empty($_SESSION['user_id'])) : ?>

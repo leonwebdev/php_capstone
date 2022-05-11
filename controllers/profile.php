@@ -20,6 +20,10 @@ if ($_SESSION['user_id']) {
 
     if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
+        if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            die('CSRF token mismatch');
+        }
+
         /* STEP 1 - Delete this record in comments table in database */
         $result_delete = $cmt->delete($_POST['comment_id']);
 
@@ -32,7 +36,6 @@ if ($_SESSION['user_id']) {
             die;
         }
     }
-
 } else {
 
     $_SESSION['flash']['error'] = 'Sorry, you must login to view this page.';

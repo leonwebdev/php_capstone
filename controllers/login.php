@@ -12,6 +12,10 @@ $errors = $errors ?? [];
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
+    if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die('CSRF token mismatch');
+    }
+
     /* STEP 1 - VALIDATE ALL FIELDS
    ---------------------------------------------------- */
 

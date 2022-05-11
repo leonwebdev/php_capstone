@@ -71,6 +71,7 @@ include __DIR__ . '/inc/header.inc.php';
                 <!-- Comment Content Block --------------------------------------------------- -->
                 <div>
                     <form method="POST">
+                        <input type="hidden" name="csrf_token" value="<?=csrf()?>" />
                         <input type="hidden" name="p" value="post">
                         <input type="hidden" name="comment_id" value="<?= esc_attr($cmt_detail['id']); ?>">
                         <button type="submit" style="background-color: #d42b06;"

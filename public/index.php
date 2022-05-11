@@ -1,16 +1,9 @@
 <?php
 
-define('ENV', 'development'); // testing, production, development
-
-// ----- SESSION START ------------------------
-// --------------------------------------------
-
-session_start();
-ob_start();
-
 // ----- REQUIRE ------------------------------
 // --------------------------------------------
 
+require __DIR__ . '/../config/config.php';
 require __DIR__ . '/../config/functions.php';
 require __DIR__ . '/../config/connect.php';
 require __DIR__ . '/../config/escape.php';

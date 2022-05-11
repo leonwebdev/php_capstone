@@ -214,3 +214,13 @@ function isAdmin(User $user, string $id): bool
 
     return $user->isAdmin($id);
 }
+
+/**
+ * return this session's csrf token
+ *
+ * @return string $_SESSION['csrf_token']
+ */
+function csrf()
+{
+    return $_SESSION['csrf_token'];
+}
