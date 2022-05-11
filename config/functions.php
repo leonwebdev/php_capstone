@@ -196,3 +196,21 @@ function getRandom3NumExceptOne(int|string $min, int|string $max, int|string $ex
 
     return [$n1, $n2, $n3];
 }
+
+use \App\Models\User;
+
+/**
+ * detect if given user-id is Admin
+ *
+ * @param User $user user Object
+ * @param string $id user-id
+ * @return boolean true for Admin, false for non-Admin
+ */
+function isAdmin(User $user, string $id): bool
+{
+    if (empty($_SESSION['user_id'])) {
+        return false;
+    }
+
+    return $user->isAdmin($id);
+}

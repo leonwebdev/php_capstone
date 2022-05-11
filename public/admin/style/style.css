@@ -7,3 +7,12 @@
 
 /* ----------- Actual CSS
 -------------------------------------------------- */
+
+/* --------- PHP Program CSS -------------------------*/
+
+.form_validate_error {
+    display: inline-block;
+    color: rgb(219, 6, 6);
+    padding-left: 1em;
+    max-width: 350px;
+  }

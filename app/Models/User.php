@@ -290,4 +290,29 @@ class User extends DatabaseQuery
 
         return $result['first_name'] . ' ' .  $result['last_name'];
     }
+
+    /**
+     * check if given user-id is Admin
+     *
+     * @param string $id user-id
+     * @return boolean true for Admin, false for non-Admin
+     */
+    public function isAdmin(string $id = ''): bool
+    {
+        $query = "SELECT is_admin
+                    FROM {$this->table}
+                    WHERE {$this->key} = :id";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        $message = (1 === $result['is_admin']) ? true : false;
+
+        return $message;
+    }
 }

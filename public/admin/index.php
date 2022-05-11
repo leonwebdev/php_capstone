@@ -26,18 +26,30 @@ use \App\Lib\FileLogger;
 $databaseLogger = new DatabaseLogger($dbh);
 $fileLogger = new FileLogger($fh);
 
-// ----- SET PAGE TITLE --------------------
+// ----- SET PAGE TITLE ------------------------
 // ---------------------------------------------
 
 $title = 'Dashboard | Administration';
+
+// ----- Get flash message ---------------------
+// ---------------------------------------------
+$flash = $_SESSION['flash'] ?? [];
+unset($_SESSION['flash']);
+
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+
+/*-----------             ACTUAL CODE IN THIS PAGE              ------------*/
+
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
 
 // ----- Get recent ten log entries --------------------
 // ---------------------------------------------
 
 $recent_ten_log_entries = $databaseLogger->getRecentTenEntries();
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -77,6 +89,18 @@ $recent_ten_log_entries = $databaseLogger->getRecentTenEntries();
     </nav>
 
     <div class="content container mt-5 mb-5">
+
+        <?php if (!empty($flash['success'])) : ?>
+        <div class="alert alert-success">
+            <?= esc($flash['success']) ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if (!empty($flash['error'])) : ?>
+        <div class="alert alert-danger">
+            <?= esc($flash['error']) ?>
+        </div>
+        <?php endif; ?>
 
         <div class="row">
             <h1 class="mb-5"><?= esc($title); ?></h1>
