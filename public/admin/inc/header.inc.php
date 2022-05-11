@@ -22,13 +22,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                        <a class="nav-link <?= ('Dashboard | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Dashboard</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Posts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Comments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
+
+                    <li class="nav-item">
+                        <a class="nav-link <?= ('Posts | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Posts</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link <?= ('Categories | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Categories</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link <?= ('Comments | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Comments</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link <?= ('Users | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="#">Users</a>
+                    </li>
+
                     <li class="nav-item"><a class="nav-link fw-bold text-danger" href="#">Logout</a></li>
                 </ul>
             </div>
