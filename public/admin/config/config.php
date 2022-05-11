@@ -47,3 +47,5 @@ if (!isAdmin($user, $user_to_detect)) {
     header('Location:/?p=login');
     die;
 }
+
+session_regenerate_id();
