@@ -38,3 +38,12 @@ unset($_SESSION['flash']);
 // ---------------------------------------------
 $errors = $_SESSION['errors'] ?? [];
 unset($_SESSION['errors']);
+
+// ----- Detect if user has logged in as Admin
+// --------------------------------------------
+$user_to_detect = $_SESSION['user_id'] ?? '';
+if (!isAdmin($user, $user_to_detect)) {
+    $_SESSION['flash']['error'] = 'Sorry, you must login as an Admin to view this page!';
+    header('Location:/?p=login');
+    die;
+}
