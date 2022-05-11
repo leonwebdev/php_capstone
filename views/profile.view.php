@@ -64,17 +64,20 @@ include __DIR__ . '/inc/header.inc.php';
                                 </a>
                             </div>
                         </div>
+                        <!-- Comment Content Block --------------------------------------------------- -->
                         <div>
-                            <form method="POST" action="/">
+                            <form method="POST">
                                 <input type="hidden" name="p" value="post">
+                                <input type="hidden" name="comment_id" value="<?= esc_attr($cmt_detail['id']); ?>">
                                 <button type="submit" style="background-color: #d42b06;" class="rm-btn-margin btn-w-fix btn-p-xsmall rm-btn-box-shadow">Delete</button>
                             </form>
                         </div>
+                        <!-- Comment Delete Block --------------------------------------------------- -->
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-        <!-- Comment Block ------------------------------------------------------------------------- -->
+        <!-- Comment Card Block ------------------------------------------------- -->
 
     </div>
 </div>

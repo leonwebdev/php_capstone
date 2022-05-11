@@ -26,9 +26,9 @@ class User extends DatabaseQuery
      *
      * @param   array  $array  input user info to insert into database
      *
-     * @return  int            return last insert id
+     * @return  int|string            return last insert id
      */
-    public function create(array $array): int
+    public function create(array $array): int|string
     {
         // Hash password -------------------------
         $hash = password_hash($array['password'], PASSWORD_DEFAULT);
@@ -88,11 +88,11 @@ class User extends DatabaseQuery
      * update a user's info by user id
      *
      * @param   array  $array  info will be updated
-     * @param   int    $id     user id
+     * @param   int|string    $id     user id
      *
      * @return  array          return last updated user info
      */
-    public function update(array $array, int $id): array
+    public function update(array $array, int|string $id): array
     {
         // Hash password -------------------------
         $hash = password_hash($array['password'], PASSWORD_DEFAULT);
@@ -140,17 +140,17 @@ class User extends DatabaseQuery
     /**
      * delete a user record by user id
      *
-     * @param   int     $id  user id
+     * @param   int|string     $id  user id
      *
      * @return  string    return a string relating to result:
      *
-     * if delete success : Record No. id has been deleted.
+     * if delete success : Record has been deleted
      *
-     * if delete fail : Record No. id still exists.
+     * if delete fail : Record still exists
      *
-     * if user id not found : Record No. id Not Found.
+     * if user id not found : Record Not Found
      */
-    public function delete(int $id): string
+    public function delete(int|string $id): string
     {
         $query = "UPDATE {$this->table}
                     SET
@@ -166,10 +166,10 @@ class User extends DatabaseQuery
 
         $check = $this->isDelete($id);
 
-        $message = ($check === 'Deleted') ? 'Record No.' . $id . ' has been deleted.'
+        $message = ($check === 'Deleted') ? 'Record has been deleted'
             : (
-                ($check === 'Existed') ? 'Record No.' . $id . ' still exists.'
-                : 'Record No.' . $id . ' Not Found.'
+            ($check === 'Existed') ? 'Record still exists'
+            : 'Record Not Found'
             );
 
         return $message;
@@ -178,7 +178,7 @@ class User extends DatabaseQuery
     /**
      * Check if a user record is deleted
      *
-     * @param   int     $id  user id
+     * @param   int|string     $id  user id
      *
      * @return  string    return a string relating to result:
      *
@@ -188,7 +188,7 @@ class User extends DatabaseQuery
      *
      * if user id not found : No Record Found.
      */
-    public function isDelete($id): string
+    public function isDelete(int|string $id): string
     {
         $query = "SELECT deleted FROM {$this->table}
                   WHERE {$this->key} = :id";

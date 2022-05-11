@@ -16,6 +16,6 @@ if (!$last_insrt_id) {
 }
 
 session_regenerate_id();
-$_SESSION['flash']['success'] = 'Congrats! You Left A New Comment Successfully!';
+$_SESSION['flash']['success'] = 'Congrats! You left a new comment successfully!';
 header('Location:/?p=profile');
 die;

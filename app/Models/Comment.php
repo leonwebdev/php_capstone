@@ -101,4 +101,78 @@ class Comment extends DatabaseQuery
 
         return $id;
     }
+
+    /**
+     * delete a comment record by comment id
+     *
+     * @param   int|string     $id  comment id
+     *
+     * @return  string    return a string relating to result:
+     *
+     * if delete success : Record has been deleted
+     *
+     * if delete fail : Record still exists
+     *
+     * if comment id not found : Record Not Found
+     */
+    public function delete(int|string $id): string
+    {
+        $query = "UPDATE {$this->table}
+                    SET
+                    deleted = 1
+                    WHERE
+                    id = :id";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $check = $this->isDelete($id);
+
+        $message = ($check === 'Deleted') ? 'Record has been deleted'
+        : (
+            ($check === 'Existed') ? 'Record still exists'
+            : 'Record Not Found'
+        );
+
+        return $message;
+    }
+
+    /**
+     * Check if a comment record is deleted
+     *
+     * @param   int|string  $id  comment id
+     *
+     * @return  string    return a string relating to result:
+     *
+     * if delete success : Deleted
+     *
+     * if delete fail : Existed.
+     *
+     * if user id not found : No Record Found.
+     */
+    public function isDelete(int|string $id): string
+    {
+        $query = "SELECT deleted FROM {$this->table}
+                  WHERE {$this->key} = :id";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        $message = ($result === false) ? 'No Record Found'
+        : (
+            ($result['deleted'] === 1) ? 'Deleted'
+            : 'Existed'
+        );
+
+        return $message;
+    }
+
 }
