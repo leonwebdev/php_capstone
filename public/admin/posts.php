@@ -36,6 +36,7 @@ include __DIR__ . '/inc/header.inc.php';
 
             <table id="admin_posts" class="table table-striped table-bordered">
                 <tr>
+                    <th>Index</th>
                     <th>Post ID</th>
                     <th>Title</th>
                     <th>Create Date</th>
@@ -43,8 +44,11 @@ include __DIR__ . '/inc/header.inc.php';
                 </tr>
                 <?php foreach ($post_dtls as $key => $post_dtl) : ?>
                     <tr>
-                        <th><?= esc($post_dtl['id']) ?></th>
-                        <td><?= esc($post_dtl['title']) ?></td>
+                        <th><?= esc($key + 1) ?></th>
+                        <td><?= esc($post_dtl['id']) ?></td>
+                        <td>
+                            <a class="text-decoration-none" href="/?p=post&postid=<?= esc_attr($post_dtl['id']) ?>"><?= esc($post_dtl['title']) ?></a>
+                        </td>
                         <td><?= esc($post_dtl['created_at']) ?></td>
                         <td>
                             <a class="btn btn-sm btn-primary me-2" href="">Edit</a>

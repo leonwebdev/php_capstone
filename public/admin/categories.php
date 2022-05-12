@@ -12,8 +12,6 @@ $title = 'Categories | Administration';
 
 $cat_dtls = $cat->getAll();
 
-$cat_dtls = array_reverse($cat_dtls);
-
 include __DIR__ . '/inc/header.inc.php';
 
 ?><div class="content container mt-5 mb-5">
@@ -37,13 +35,15 @@ include __DIR__ . '/inc/header.inc.php';
             <table id="admin_categories" class="table table-striped table-bordered">
                 <tr>
                     <th>Category ID</th>
-                    <th>Title</th>
+                    <th>Category Name</th>
+                    <th>Count of Posts</th>
                     <th>Create Date</th>
                 </tr>
                 <?php foreach ($cat_dtls as $key => $cat_dtl) : ?>
                     <tr>
                         <th><?= esc($cat_dtl['id']) ?></th>
                         <td><?= esc($cat_dtl['title']) ?></td>
+                        <td><?= esc($posts->getPostCountByCategoryId($cat_dtl['id'])) ?></td>
                         <td><?= esc($cat_dtl['created_at']) ?></td>
                     </tr>
                 <?php endforeach; ?>

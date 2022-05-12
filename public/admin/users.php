@@ -10,8 +10,7 @@ $title = 'Users | Administration';
 
 /*--------------------------------------------------------------------------*/
 
-// ----- Get recent ten log entries --------------------
-$recent_ten_log_entries = $databaseLogger->getRecentTenEntries();
+$user_dtls = $user->getAll();
 
 include __DIR__ . '/inc/header.inc.php';
 
@@ -32,17 +31,22 @@ include __DIR__ . '/inc/header.inc.php';
     <div class="row">
         <h1 class="mb-5"><?= esc($title); ?></h1>
         <div class="main col-12">
-            <h2>Recent Log Entries</h2>
 
-            <table id="log" class="table table-striped table-bordered">
+            <table id="admin_users" class="table table-striped table-bordered">
                 <tr>
-                    <th>date/time | http status | request method | request URI | User Browser Info</th>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Count of Posts</th>
+                    <th>Count of Comments</th>
+                    <th>Registered Date</th>
                 </tr>
-                <?php foreach ($recent_ten_log_entries as $key => $value) : ?>
+                <?php foreach ($user_dtls as $key => $user_dtl) : ?>
                     <tr>
-                        <td>
-                            <small><?= esc($value['event']) ?></small>
-                        </td>
+                        <th><?= esc($user_dtl['id']) ?></th>
+                        <td><?= esc($user_dtl['title']) ?></td>
+                        <td><?= esc($posts->getPostCountByCategoryId($user_dtl['id'])) ?></td>
+                        <td><?= esc($user_dtl['created_at']) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

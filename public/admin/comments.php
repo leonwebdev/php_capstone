@@ -36,6 +36,7 @@ include __DIR__ . '/inc/header.inc.php';
 
             <table id="admin_comments" class="table table-striped table-bordered">
                 <tr>
+                    <th>Index</th>
                     <th>Comment ID</th>
                     <th>Author</th>
                     <th>At This Post</th>
@@ -44,10 +45,17 @@ include __DIR__ . '/inc/header.inc.php';
                 </tr>
                 <?php foreach ($cmt_dtls as $key => $cmt_dtl) : ?>
                     <tr>
-                        <th><?= esc($cmt_dtl['id']) ?></th>
+                        <th><?= esc($key + 1) ?></th>
+                        <td><?= esc($cmt_dtl['id']) ?></td>
                         <td><?= esc($user->getUserNameByIdRelatingToComment($cmt_dtl['userid'])) ?></td>
-                        <td><?= esc($posts->getTitleById($cmt_dtl['postid'])) ?></td>
-                        <td><?= html($cmt_dtl['content']) ?></td>
+                        <td>
+                            <a class="text-decoration-none" href="/?p=post&postid=<?= esc_attr($cmt_dtl['postid']) ?>"><?= esc($posts->getTitleById($cmt_dtl['postid'])) ?></a>
+                        </td>
+                        <td>
+                            <a class="text-decoration-none" href="/?p=post&postid=<?= esc_attr($cmt_dtl['postid'] . '#cmt' . $cmt_dtl['id']) ?>">
+                                <?= html((strlen($cmt_dtl['content']) < 70) ? $cmt_dtl['content'] : substr($cmt_dtl['content'], 0, 60) . "...") ?>
+                            </a>
+                        </td>
                         <td><?= esc($cmt_dtl['created_at']) ?></td>
                     </tr>
                 <?php endforeach; ?>
