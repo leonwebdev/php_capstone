@@ -53,7 +53,7 @@ CREATE TABLE `posts` (
     `content` LONGTEXT NULL DEFAULT NULL,
     `image` VARCHAR(255),
     `categoryid` BIGINT NOT NULL,
-    `status` ENUM('draft', 'hidden', 'post'),
+    `status` ENUM('draft', 'hidden', 'post') DEFAULT 'draft',
     `allow_comment` BOOL NOT NULL DEFAULT 1,
     `deleted` BOOL NOT NULL DEFAULT 0,
     `published_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
