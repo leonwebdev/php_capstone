@@ -204,4 +204,28 @@ class Post extends DatabaseQuery
 
         return $result['published_at'];
     }
+
+    /**
+     * get Post Count By Category Id
+     *
+     * @param string $id Category Id
+     * @return string|integer Post Count
+     */
+    public function getPostCountByCategoryId(string $id = ''): string|int
+    {
+        $query = "  SELECT COUNT({$this->table}.id) AS count
+                    FROM {$this->table}
+                    WHERE categoryid = :id
+                    ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['count'];
+    }
 }
