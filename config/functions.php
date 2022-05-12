@@ -70,15 +70,14 @@ function isEmailUnique(string $email): bool
     // query from database if there is an email similar with the input email
     global $dbh;
 
-    $query = "
-            SELECT
+    $query = "SELECT
                 email
 
-            FROM
+                FROM
                 users
 
-            WHERE
-                email LIKE :email
+                WHERE deleted = 0
+                AND email LIKE :email
     ";
 
     $stmt = $dbh->prepare($query);

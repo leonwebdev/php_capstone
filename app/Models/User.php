@@ -304,7 +304,8 @@ class User extends DatabaseQuery
     {
         $query = "SELECT is_admin
                     FROM {$this->table}
-                    WHERE {$this->key} = :id";
+                    WHERE deleted = 0
+                    AND {$this->key} = :id";
 
         $stmt = self::$dbh->prepare($query);
 
