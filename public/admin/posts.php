@@ -43,6 +43,7 @@ include __DIR__ . '/inc/header.inc.php';
                     <th>Index</th>
                     <th>Post ID</th>
                     <th>Title</th>
+                    <th>Count of Comments</th>
                     <th>Create Date</th>
                     <th>Actions</th>
                 </tr>
@@ -54,6 +55,7 @@ include __DIR__ . '/inc/header.inc.php';
                         <a class="text-decoration-none"
                             href="/?p=post&postid=<?= esc_attr($post_dtl['id']) ?>"><?= esc($post_dtl['title']) ?></a>
                     </td>
+                    <td><?= esc($cmt->getCommentCountByPostId($post_dtl['id'])) ?></td>
                     <td><?= esc($post_dtl['created_at']) ?></td>
                     <td>
                         <a class="btn btn-sm btn-primary me-2" href="">Edit</a>
