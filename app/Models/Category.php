@@ -24,8 +24,9 @@ class Category extends DatabaseQuery
     {
         $query = "  SELECT *
                     FROM {$this->table}
-                    WHERE id = :id
-                    AND deleted = 0";
+                    WHERE deleted = 0
+                    AND id = :id
+                    ";
 
         $stmt = self::$dbh->prepare($query);
 

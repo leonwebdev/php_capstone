@@ -225,8 +225,9 @@ class User extends DatabaseQuery
     {
         $query = "  SELECT *
                     FROM {$this->table}
-                    WHERE {$field} = :email
-                    AND deleted = 0";
+                    WHERE deleted = 0
+                    AND {$field} = :email
+                    ";
 
         $stmt = self::$dbh->prepare($query);
 
@@ -250,8 +251,9 @@ class User extends DatabaseQuery
     {
         $query = "  SELECT *
                     FROM {$this->table}
-                    WHERE id = :id
-                    AND deleted = 0";
+                    WHERE deleted = 0
+                    AND id = :id
+                    ";
 
         $stmt = self::$dbh->prepare($query);
 
@@ -277,8 +279,9 @@ class User extends DatabaseQuery
     {
         $query = "  SELECT *
                     FROM {$this->table}
-                    WHERE id = :id
-                    AND deleted = 0";
+                    WHERE deleted = 0
+                    AND id = :id
+                    ";
 
         $stmt = self::$dbh->prepare($query);
 

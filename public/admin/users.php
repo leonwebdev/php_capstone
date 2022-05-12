@@ -44,8 +44,10 @@ include __DIR__ . '/inc/header.inc.php';
                 <?php foreach ($user_dtls as $key => $user_dtl) : ?>
                     <tr>
                         <th><?= esc($user_dtl['id']) ?></th>
-                        <td><?= esc($user_dtl['title']) ?></td>
-                        <td><?= esc($posts->getPostCountByCategoryId($user_dtl['id'])) ?></td>
+                        <td><?= esc($user_dtl['first_name'] . ' ' . $user_dtl['last_name']) ?></td>
+                        <td><?= esc($user_dtl['email']) ?></td>
+                        <td><?= esc($posts->getPostCountByUserId($user_dtl['id'])) ?></td>
+                        <td><?= esc($cmt->getCommentCountByUserId($user_dtl['id'])) ?></td>
                         <td><?= esc($user_dtl['created_at']) ?></td>
                     </tr>
                 <?php endforeach; ?>

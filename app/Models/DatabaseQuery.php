@@ -62,8 +62,9 @@ abstract class DatabaseQuery
     {
         $query = "  SELECT *
                     FROM {$this->table}
-                    WHERE {$this->key} = :id
-                    AND deleted = 0";
+                    WHERE deleted = 0
+                    AND {$this->key} = :id
+                    ";
 
         $stmt = self::$dbh->prepare($query);
 

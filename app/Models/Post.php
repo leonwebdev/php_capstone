@@ -215,7 +215,33 @@ class Post extends DatabaseQuery
     {
         $query = "  SELECT COUNT({$this->table}.id) AS count
                     FROM {$this->table}
-                    WHERE categoryid = :id
+                    WHERE deleted = 0
+                    AND categoryid = :id
+                    ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['count'];
+    }
+
+    /**
+     * get Post Count By User Id
+     *
+     * @param string $id User Id
+     * @return string|integer Post Count
+     */
+    public function getPostCountByUserId(string $id = ''): string|int
+    {
+        $query = "  SELECT COUNT({$this->table}.id) AS count
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    AND authorid = :id
                     ";
 
         $stmt = self::$dbh->prepare($query);

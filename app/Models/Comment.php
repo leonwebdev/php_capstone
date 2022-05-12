@@ -175,4 +175,28 @@ class Comment extends DatabaseQuery
         return $message;
     }
 
+    /**
+     * get Comment Count By User Id
+     *
+     * @param string $id User Id
+     * @return string|integer Comment Count
+     */
+    public function getCommentCountByUserId(string $id = ''): string|int
+    {
+        $query = "  SELECT COUNT({$this->table}.id) AS count
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    AND userid = :id
+                    ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['count'];
+    }
 }
