@@ -43,7 +43,7 @@
                         <a class="nav-link <?= ('Users | Administration' == $title) ? "active\" aria-current=\"page\"" : '' ?> " href="./users.php">Users</a>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link fw-bold text-danger" href="#">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold text-danger" href="./logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
