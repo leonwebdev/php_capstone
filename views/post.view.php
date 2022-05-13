@@ -34,6 +34,7 @@
 
         <?php if (!empty($post_details)) : ?>
         <?php foreach ($post_details as $post_detail) : ?>
+        <?php if ('post' !== $post_detail['status']) { break; }?>
         <div class="post_card s-box">
             <div><a href="/?p=post&postid=<?= esc_attr($post_detail['id']); ?>">
                     <img src="images/posts/<?= esc_attr($post_detail['image']); ?>" alt="post" class="img-auto-width">

@@ -155,8 +155,8 @@ VALUES
 ("Some plants can serve as cuisine","2","Do you know some plants are delicious enough to serve as food?","content","16.jpg","1","post"),
 ("Flowers can be used to dye cloth","1","I read a book recently about techniques to dye cloth with flowers.","content","17.jpg","4","post"),
 ("Three species to bloom the whole year","1","These species can bloom even during Christmas in Northern Hemisphere.","content","18.jpg","5","post"),
-("Precious species only bloom at night","1","Very interesting species that they only bloom at night.","content","19.jpg","2","post"),
-("Not only bees can pollen","1","Some other animals or insects also can.","content","20.jpg","4","post")
+("Precious species only bloom at night","1","Very interesting species that they only bloom at night.","content","19.jpg","2","hidden"),
+("Not only bees can pollen","1","Some other animals or insects also can.","content","20.jpg","4","draft")
 ;
 
 UPDATE `posts` SET `content` =
