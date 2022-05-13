@@ -256,4 +256,35 @@ class Post extends DatabaseQuery
 
         return $result['count'];
     }
+
+    /**
+     * get All Hidden And Draft Post-Ids
+     *
+     * @return mixed All Hidden And Draft Post-Ids
+     */
+    public function getAllHiddenAndDraftPostIds():mixed
+    {
+        $query = "  SELECT {$this->table}.id
+
+                    FROM {$this->table}
+
+                    WHERE {$this->table}.deleted = 0
+
+                    AND (
+                    {$this->table}.status = 'hidden' OR
+                    {$this->table}.status = 'draft'
+                    )";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+
+        foreach ($result as $key => $value) {
+            $array[] = $value['id'];
+        }
+
+        return $array;
+    }
 }

@@ -167,31 +167,35 @@ function formatDateTime(string $org_date = ''): string
 }
 
 /**
- * get Random 3 Num Except Specific One
+ * get Random 3 Num Except Specific items
  *
  * @param int|string $min
  *   min of the scope
  * @param int|string $max
  *   max of the scope
- * @param int|string $except
- *   except this specific number
+ * @param array $except
+ *   except these specific items
  *
  * @return mixed
  *   three num in an array
  */
-function getRandom3NumExceptOne(int|string $min, int|string $max, int|string $except): mixed
+function getRandom3NumExceptThese(int|string $min, int|string $max, array $except): mixed
 {
     do {
         $n1 = random_int($min, $max);
-    } while (in_array($n1, array($except)));
+    } while (in_array($n1, $except));
+
+    $except[] = $n1;
 
     do {
         $n2 = random_int($min, $max);
-    } while (in_array($n2, array($except, $n1)));
+    } while (in_array($n2, $except));
+
+    $except[] = $n2;
 
     do {
         $n3 = random_int($min, $max);
-    } while (in_array($n3, array($except, $n1, $n2)));
+    } while (in_array($n3, $except));
 
     return [$n1, $n2, $n3];
 }

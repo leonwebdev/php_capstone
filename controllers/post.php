@@ -26,7 +26,11 @@ if (!empty($_GET['postid'])) {
 
     $total_of_posts = count($post->getAll());
 
-    $three_random_num = getRandom3NumExceptOne(1, $total_of_posts, $_GET['postid']);
+    $all_hidden_and_draft_post_ids = $post->getAllHiddenAndDraftPostIds();
+
+    $all_hidden_and_draft_post_ids[] = $_GET['postid'];
+
+    $three_random_num = getRandom3NumExceptThese(1, $total_of_posts, $all_hidden_and_draft_post_ids);
 
     $comments = $cmt->getCommentByPostid($post_detail['id']);
 
