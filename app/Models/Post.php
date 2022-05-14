@@ -284,6 +284,106 @@ class Post extends DatabaseQuery
             $array[] = $value['id'];
         }
 
-        return $array;
+        return $array ?? [];
+    }
+
+    /**
+     * get All Deleted Post-Ids
+     *
+     * @return mixed All Deleted Post-Ids
+     */
+    public function getAllDeletedPostIds(): mixed
+    {
+        $query = "  SELECT {$this->table}.id
+
+                    FROM {$this->table}
+
+                    WHERE {$this->table}.deleted = 1
+                    ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+
+        foreach ($result as $key => $value) {
+            $array[] = $value['id'];
+        }
+
+        return $array ?? [];
+    }
+
+    /**
+     * delete a post record by post id
+     *
+     * @param   int|string     $id  post id
+     *
+     * @return  string    return a string relating to result:
+     *
+     * if delete success : Record has been deleted
+     *
+     * if delete fail : Record still exists
+     *
+     * if post id not found : Record Not Found
+     */
+    public function delete(int|string $id): string
+    {
+        $query = "UPDATE {$this->table}
+                    SET
+                    deleted = 1
+                    WHERE
+                    id = :id";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $check = $this->isDelete($id);
+
+        $message = ($check === 'Deleted') ? 'Record has been deleted'
+        : (
+            ($check === 'Existed') ? 'Record still exists'
+            : 'Record Not Found'
+        );
+
+        return $message;
+    }
+
+    /**
+     * Check if a post record is deleted
+     *
+     * @param   int|string  $id  post id
+     *
+     * @return  string    return a string relating to result:
+     *
+     * if delete success : Deleted
+     *
+     * if delete fail : Existed.
+     *
+     * if user id not found : No Record Found.
+     */
+    public function isDelete(int|string $id): string
+    {
+        $query = "SELECT deleted FROM {$this->table}
+                  WHERE {$this->key} = :id";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        $message = ($result === false) ? 'No Record Found'
+        : (
+            ($result['deleted'] === 1) ? 'Deleted'
+            : 'Existed'
+        );
+
+        return $message;
     }
 }

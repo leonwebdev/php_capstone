@@ -28,6 +28,15 @@ if (!empty($_GET['postid'])) {
 
     $all_hidden_and_draft_post_ids = $post->getAllHiddenAndDraftPostIds();
 
+    $all_deleted_post_ids = $post->getAllDeletedPostIds();
+
+    if (in_array($_GET['postid'], $all_deleted_post_ids)) {
+
+        $_SESSION['flash']['error'] = 'Sorry, this page is deleted!';
+        header('Location:/?p=profile');
+        die;
+    }
+
     if (in_array($_GET['postid'], $all_hidden_and_draft_post_ids)) {
 
         // ----- Detect if user has logged in as Admin
@@ -40,9 +49,12 @@ if (!empty($_GET['postid'])) {
         }
     }
 
+
     $all_hidden_and_draft_post_ids[] = $_GET['postid'];
 
-    $three_random_num = getRandom3NumExceptThese(1, $total_of_posts, $all_hidden_and_draft_post_ids);
+    $except = array_merge($all_hidden_and_draft_post_ids, $all_deleted_post_ids);
+
+    $three_random_num = getRandom3NumExceptThese(1, $total_of_posts, $except);
 
     $comments = $cmt->getCommentByPostid($post_detail['id']);
 
