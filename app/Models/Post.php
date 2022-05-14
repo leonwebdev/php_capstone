@@ -459,4 +459,77 @@ class Post extends DatabaseQuery
         return $message;
     }
 
+    /**
+     * hide a post record by post id
+     *
+     * @param   int|string     $id  post id
+     *
+     * @return  string    return a string relating to result:
+     *
+     * if hide success : Record has been hidden
+     *
+     * if hide fail : Record still not hidden
+     *
+     * if post id not found : Record Not Found
+     */
+    public function hide(int|string $id): string
+    {
+        $query = "UPDATE {$this->table}
+                    SET
+                    status = 'hidden'
+                    WHERE
+                    id = :id";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $check = $this->isHide($id);
+
+        $message = ($check === 'Hidden') ? 'Record has been hidden'
+        : (
+            ($check === 'UnHidden') ? 'Record still not hidden'
+            : 'Record Not Found'
+        );
+
+        return $message;
+    }
+
+    /**
+     * Check if a post record is Hidden
+     *
+     * @param   int|string  $id  post id
+     *
+     * @return  string    return a string relating to result:
+     *
+     * if Published success : Hidden
+     *
+     * if Published fail : UnHidden.
+     *
+     * if post id not found : No Record Found.
+     */
+    public function isHide(int|string $id): string
+    {
+        $query = "SELECT status FROM {$this->table}
+                  WHERE {$this->key} = :id";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        $message = ($result === false) ? 'No Record Found'
+        : (
+            ($result['status'] === 'hidden') ? 'Hidden'
+            : 'UnHidden'
+        );
+
+        return $message;
+    }
+
 }
