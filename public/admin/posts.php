@@ -71,10 +71,14 @@ include __DIR__ . '/inc/header.inc.php';
                             href="./edit_post.php?id=<?= esc_attr($post_dtl['id']) ?>">Edit</a>
                         <a class="btn btn-sm btn-danger me-2"
                             href="./delete_post.php?id=<?= esc_attr($post_dtl['id']) ?>">Delete</a>
-                        <a class="btn btn-sm btn-success me-2"
+                        <?php if ('post' !== $post_dtl['status']) : ?>
+                        <a class="btn btn-sm btn-success"
                             href="./publish_post.php?id=<?= esc_attr($post_dtl['id']) ?>">Publish</a>
+                        <?php endif; ?>
+                        <?php if ('post' === $post_dtl['status']) : ?>
                         <a class="btn btn-sm btn-warning"
                             href="./hide_post.php?id=<?= esc_attr($post_dtl['id']) ?>">Hide</a>
+                        <?php endif; ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

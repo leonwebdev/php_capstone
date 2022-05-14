@@ -164,8 +164,7 @@ class Post extends DatabaseQuery
     {
         $query = "  SELECT title
                     FROM {$this->table}
-                    WHERE deleted = 0
-                    AND
+                    WHERE
                     id = :id
                     ";
 
