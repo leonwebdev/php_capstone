@@ -28,6 +28,18 @@ if (!empty($_GET['postid'])) {
 
     $all_hidden_and_draft_post_ids = $post->getAllHiddenAndDraftPostIds();
 
+    if (in_array($_GET['postid'], $all_hidden_and_draft_post_ids)) {
+
+        // ----- Detect if user has logged in as Admin
+        // --------------------------------------------
+        $user_to_detect = $_SESSION['user_id'] ?? '';
+        if (!isAdmin($user, $user_to_detect)) {
+            $_SESSION['flash']['error'] = 'Sorry, you must login as an Admin to view this page!';
+            header('Location:/?p=login');
+            die;
+        }
+    }
+
     $all_hidden_and_draft_post_ids[] = $_GET['postid'];
 
     $three_random_num = getRandom3NumExceptThese(1, $total_of_posts, $all_hidden_and_draft_post_ids);
