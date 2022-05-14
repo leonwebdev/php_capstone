@@ -385,4 +385,78 @@ class Post extends DatabaseQuery
 
         return $message;
     }
+
+    /**
+     * publish a post record by post id
+     *
+     * @param   int|string     $id  post id
+     *
+     * @return  string    return a string relating to result:
+     *
+     * if publish success : Record has been published
+     *
+     * if publish fail : Record still not published
+     *
+     * if post id not found : Record Not Found
+     */
+    public function publish(int|string $id): string
+    {
+        $query = "UPDATE {$this->table}
+                    SET
+                    status = 'post'
+                    WHERE
+                    id = :id";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $check = $this->isPublish($id);
+
+        $message = ($check === 'Published') ? 'Record has been published'
+        : (
+            ($check === 'UnPublished') ? 'Record still not published'
+            : 'Record Not Found'
+        );
+
+        return $message;
+    }
+
+    /**
+     * Check if a post record is Published
+     *
+     * @param   int|string  $id  post id
+     *
+     * @return  string    return a string relating to result:
+     *
+     * if Published success : Published
+     *
+     * if Published fail : UnPublished.
+     *
+     * if post id not found : No Record Found.
+     */
+    public function isPublish(int|string $id): string
+    {
+        $query = "SELECT status FROM {$this->table}
+                  WHERE {$this->key} = :id";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        $message = ($result === false) ? 'No Record Found'
+        : (
+            ($result['status'] === 'post') ? 'Published'
+            : 'UnPublished'
+        );
+
+        return $message;
+    }
+
 }
