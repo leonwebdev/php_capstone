@@ -17,9 +17,9 @@ class Post extends DatabaseQuery
      *
      * @param   array  $array  input post info to insert into database
      *
-     * @return  int            return last insert id
+     * @return  int|string  return last insert id
      */
-    public function create(array $array): int
+    public function create(array $array): int|string
     {
         $query = "INSERT INTO {$this->table}
                   (

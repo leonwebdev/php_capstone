@@ -23,7 +23,6 @@ $validate_post_create->validateMinLength(3, 'title');
 $validate_post_create->validateMaxLength(255, 'title');
 
 // Summary must be valid
-$validate_post_create->validateString('summary');
 $validate_post_create->validateMinLength(3, 'summary');
 $validate_post_create->validateMaxLength(255, 'summary');
 
