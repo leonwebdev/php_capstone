@@ -146,7 +146,30 @@ class Validator
     {
         if (empty($this->file[$field]['name'])) {
             $this->errors[$field][] = 'You must upload an image.';
+        } else {
+            $tmp_name = $this->file[$field]['tmp_name'];
+
+            $img_data = getimagesize($tmp_name);
+
+            if (!$img_data) {
+                $this->errors[$field][] = "The file you uploaded was not an image";
+            } else {
+                $allowed = [
+                    'image/jpg',
+                    'image/jpeg',
+                    'image/gif',
+                    'image/webp'
+                ];
+
+                $mime = $img_data['mime'] ?? false;
+
+                if (!$mime || !in_array($mime, $allowed)) {
+                    $this->errors[$field][] = 'Sorry, incompatible image format.';
+                }
+            }
         }
+
+
     }
 
     /* ----------- MAGIC METHOD
