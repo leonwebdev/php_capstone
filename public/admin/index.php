@@ -18,15 +18,15 @@ include __DIR__ . '/inc/header.inc.php';
 ?><div class="content container mt-5 mb-5">
 
     <?php if (!empty($flash['success'])) : ?>
-        <div class="alert alert-success">
-            <?= esc($flash['success']) ?>
-        </div>
+    <div class="alert alert-success">
+        <?= esc($flash['success']) ?>
+    </div>
     <?php endif; ?>
 
     <?php if (!empty($flash['error'])) : ?>
-        <div class="alert alert-danger">
-            <?= esc($flash['error']) ?>
-        </div>
+    <div class="alert alert-danger">
+        <?= esc($flash['error']) ?>
+    </div>
     <?php endif; ?>
 
     <div class="row">
@@ -39,11 +39,11 @@ include __DIR__ . '/inc/header.inc.php';
                     <th>date/time | http status | request method | request URI | User Browser Info</th>
                 </tr>
                 <?php foreach ($recent_ten_log_entries as $key => $value) : ?>
-                    <tr>
-                        <td>
-                            <small><?= esc($value['event']) ?></small>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        <small><?= esc($value['event']) ?></small>
+                    </td>
+                </tr>
                 <?php endforeach; ?>
             </table>
         </div>
@@ -51,3 +51,7 @@ include __DIR__ . '/inc/header.inc.php';
 </div>
 
 <?php include __DIR__ . '/inc/footer.inc.php'; ?>
+
+</body>
+
+</html>

@@ -65,3 +65,7 @@ include __DIR__ . '/inc/header.inc.php';
 </div>
 
 <?php include __DIR__ . '/inc/footer.inc.php'; ?>
+
+</body>
+
+</html>

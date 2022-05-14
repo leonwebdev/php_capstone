@@ -17,15 +17,15 @@ include __DIR__ . '/inc/header.inc.php';
 ?><div class="content container mt-5 mb-5">
 
     <?php if (!empty($flash['success'])) : ?>
-        <div class="alert alert-success">
-            <?= esc($flash['success']) ?>
-        </div>
+    <div class="alert alert-success">
+        <?= esc($flash['success']) ?>
+    </div>
     <?php endif; ?>
 
     <?php if (!empty($flash['error'])) : ?>
-        <div class="alert alert-danger">
-            <?= esc($flash['error']) ?>
-        </div>
+    <div class="alert alert-danger">
+        <?= esc($flash['error']) ?>
+    </div>
     <?php endif; ?>
 
     <div class="row">
@@ -42,14 +42,14 @@ include __DIR__ . '/inc/header.inc.php';
                     <th>Registered Date</th>
                 </tr>
                 <?php foreach ($user_dtls as $key => $user_dtl) : ?>
-                    <tr>
-                        <th><?= esc($user_dtl['id']) ?></th>
-                        <td><?= esc($user_dtl['first_name'] . ' ' . $user_dtl['last_name']) ?></td>
-                        <td><?= esc($user_dtl['email']) ?></td>
-                        <td><?= esc($posts->getPostCountByUserId($user_dtl['id'])) ?></td>
-                        <td><?= esc($cmt->getCommentCountByUserId($user_dtl['id'])) ?></td>
-                        <td><?= esc($user_dtl['created_at']) ?></td>
-                    </tr>
+                <tr>
+                    <th><?= esc($user_dtl['id']) ?></th>
+                    <td><?= esc($user_dtl['first_name'] . ' ' . $user_dtl['last_name']) ?></td>
+                    <td><?= esc($user_dtl['email']) ?></td>
+                    <td><?= esc($posts->getPostCountByUserId($user_dtl['id'])) ?></td>
+                    <td><?= esc($cmt->getCommentCountByUserId($user_dtl['id'])) ?></td>
+                    <td><?= esc($user_dtl['created_at']) ?></td>
+                </tr>
                 <?php endforeach; ?>
             </table>
         </div>
@@ -57,3 +57,7 @@ include __DIR__ . '/inc/header.inc.php';
 </div>
 
 <?php include __DIR__ . '/inc/footer.inc.php'; ?>
+
+</body>
+
+</html>
