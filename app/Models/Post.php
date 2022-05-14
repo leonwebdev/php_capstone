@@ -135,7 +135,6 @@ class Post extends DatabaseQuery
                     LEFT JOIN comments ON {$this->table}.id = comments.postid
 
                     WHERE {$this->table}.deleted = 0
-                    AND {$this->table}.status = 'post'
 
                     AND (
                     {$this->table}.title LIKE :search OR

@@ -227,3 +227,21 @@ function csrf()
 {
     return $_SESSION['csrf_token'];
 }
+
+/**
+ * filter Hidden And Draft Posts
+ *
+ * @param array $array the whole array of
+ * @return mixed All Posts with a status of 'post'
+ */
+function filterHiddenAndDraftPosts(array $array): mixed
+{
+    foreach ($array as $key => $value) {
+
+        if ('post' === $value['status']) {
+            $result[] = $value;
+        }
+    }
+
+    return $result ?? [];
+}
