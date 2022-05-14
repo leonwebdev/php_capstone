@@ -14,6 +14,8 @@ $post_dtls = $posts->getAll();
 
 $post_dtls = array_reverse($post_dtls);
 
+
+
 include __DIR__ . '/inc/header.inc.php';
 
 ?><div class="content container mt-5 mb-5">
@@ -33,9 +35,19 @@ include __DIR__ . '/inc/header.inc.php';
     <div class="row">
         <h1 class="mb-5"><?= esc($title); ?></h1>
         <div class="main col-12">
-
-            <div class="mb-5">
-                <a class="btn btn-success" href="./post_create.php">Create a Post</a>
+            <div class="row">
+                <div class="col mb-5">
+                    <a class="btn btn-success" href="./post_create.php">Create a Post</a>
+                </div>
+                <div class="col-4 justify-content-end">
+                    <form method="get" autocomplete="off" novalidate>
+                        <div class="d-flex">
+                            <input id="search" type="text" name="search" class="form-control"
+                                value="<?= esc_attr($_GET['search'] ?? '') ?>" />
+                            <button type="submit" class="btn btn-primary ms-2">Search</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <table id="admin_posts" class="table table-striped table-bordered" style="text-align: center;">
