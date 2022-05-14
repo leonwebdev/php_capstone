@@ -136,7 +136,8 @@ include __DIR__ . '/inc/header.inc.php';
 
                     <div class="mb-3">
                         <label for="image" class="form-label fw-bold">Upload a picture</label>
-                        <input class="form-control" type="file" id="image" name="image">
+                        <input class="form-control" type="file" id="image" name="image"
+                            value="<?= esc_attr($_POST['image'] ?? ''); ?>">
                         <span class="form_validate_error my-3"><?= esc($errors['image'][0] ?? '') ?></span>
                     </div>
                     <div class="mt-3">

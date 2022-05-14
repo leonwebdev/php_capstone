@@ -63,7 +63,7 @@ include __DIR__ . '/inc/header.inc.php';
                         <?= ($post_dtl['allow_comment']) ? "class=\"bg-success text-white fw-bold\"" : "class=\"bg-danger text-white fw-bold\"" ?>>
                         <?= ($post_dtl['allow_comment']) ? 'Yes' : 'No' ?></td>
 
-                    <td><?= esc(formatDateTime($post_dtl['created_at'])) ?></td>
+                    <td><?= esc(formatDateTime($post_dtl['published_at'])) ?></td>
                     <td <?= ('post' != $post_dtl['status']) ? "class=\"bg-warning text-dark fw-bold\"" : "" ?>>
                         <?= esc($post_dtl['status']) ?></td>
                     <td>

@@ -147,6 +147,8 @@ include __DIR__ . '/inc/header.inc.php';
                             <img src="./../images/posts/<?= esc_attr($post_dtl['image']) ?>"
                                 style="width: 100%;height:auto;">
                         </div>
+                        <input type="hidden" name="image"
+                            value="<?= esc_attr($_POST['image'] ?? $post_dtl['image']); ?>">
                         <label for="image" class="form-label fw-bold">Upload a picture</label>
                         <input class="form-control" type="file" id="image" name="image">
                         <span class="form_validate_error my-3"><?= esc($errors['image'][0] ?? '') ?></span>

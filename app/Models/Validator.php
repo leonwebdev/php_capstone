@@ -145,7 +145,12 @@ class Validator
     public function validateImage(string $field): void
     {
         if (empty($this->file[$field]['name'])) {
-            $this->errors[$field][] = 'You must upload an image.';
+
+            if (empty($this->array['image'])) {
+
+                $this->errors[$field][] = 'You must upload an image.';
+            }
+
         } else {
             $tmp_name = $this->file[$field]['tmp_name'];
 
