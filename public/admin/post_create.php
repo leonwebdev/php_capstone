@@ -79,9 +79,10 @@ include __DIR__ . '/inc/header.inc.php';
                         <div class="col">
                             <label for="authorid" class="form-label fw-bold">Author</label>
                             <select class="form-select" id="authorid" name="authorid">
-                                <option value="0" selected>Select your author</option>
+                                <option value="0">Select your author</option>
                                 <?php foreach ($user_dtls as $key => $user_dtl) : ?>
-                                <option value="<?= esc_attr($user_dtl['id']) ?>">
+                                <option value="<?= esc_attr($user_dtl['id']) ?>"
+                                    <?= ($user_dtl['id'] == $_POST['authorid']) ? "selected" : "" ?>>
                                     <?= esc($user_dtl['first_name'] . ' ' . $user_dtl['last_name']) ?></option>
                                 <?php endforeach; ?>
                             </select>
@@ -90,9 +91,10 @@ include __DIR__ . '/inc/header.inc.php';
                         <div class="col">
                             <label for="categoryid" class="form-label fw-bold">Category</label>
                             <select class="form-select" id="categoryid" name="categoryid">
-                                <option value="0" selected>Select category</option>
+                                <option value="0">Select category</option>
                                 <?php foreach ($cat_dtls as $key => $cat_dtl) : ?>
-                                <option value="<?= esc_attr($cat_dtl['id']) ?>">
+                                <option value="<?= esc_attr($cat_dtl['id']) ?>"
+                                    <?= ($cat_dtl['id'] == $_POST['categoryid']) ? "selected" : "" ?>>
                                     <?= esc($cat_dtl['title']) ?></option>
                                 <?php endforeach; ?>
                             </select>
@@ -101,10 +103,12 @@ include __DIR__ . '/inc/header.inc.php';
                         <div class="col">
                             <label for="status" class="form-label fw-bold">Status</label>
                             <select class="form-select" id="status" name="status">
-                                <option value="0" selected>Select status</option>
-                                <option value="draft">draft</option>
-                                <option value="hidden">hidden</option>
-                                <option value="post">post</option>
+                                <option value="0">Select status</option>
+                                <option value="draft" <?= ("draft" == $_POST['status']) ? "selected" : "" ?>>draft
+                                </option>
+                                <option value="hidden <?= ("hidden" == $_POST['status']) ? "selected" : "" ?>">hidden
+                                </option>
+                                <option value="post <?= ("post" == $_POST['status']) ? "selected" : "" ?>">post</option>
                             </select>
                             <span class="form_validate_error my-3"><?= esc($errors['status'][0] ?? '') ?></span>
                         </div>
@@ -123,8 +127,9 @@ include __DIR__ . '/inc/header.inc.php';
                     <div class="mb-3">
                         <label for="image" class="form-label fw-bold">Upload a picture</label>
                         <input class="form-control" type="file" id="image" name="image">
+                        <span class="form_validate_error my-3"><?= esc($errors['image'][0] ?? '') ?></span>
                     </div>
-                    <div class="mt-5">
+                    <div class="mt-3">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

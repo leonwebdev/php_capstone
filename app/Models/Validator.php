@@ -13,6 +13,7 @@ class Validator
      * @var array
      */
     private $array;
+    private $file;
 
     /**
      * $errors will display on screen
@@ -23,14 +24,17 @@ class Validator
 
     /**
      *
-     * Construction Function, import $_POST as an array
+     * Construction Function, import $_POST as an array,
+     * second param is optional, for $_FILES
      *
      * @param   array  $array  the $_POST user input
+     * @param   null|array  $file  the $_FILES user input
      *
      */
-    public function __construct(array $array)
+    public function __construct(array $array, array $file = [])
     {
         $this->array = $array;
+        $this->file = $file;
     }
 
     /**
@@ -135,6 +139,13 @@ class Validator
                 $label = ucwords(str_replace('_', ' ', $post_key));
                 $this->errors[$post_key][] = "* " . $label . " is required";
             }
+        }
+    }
+
+    public function validateImage(string $field): void
+    {
+        if (empty($this->file[$field]['name'])) {
+            $this->errors[$field][] = 'You must upload an image.';
         }
     }
 

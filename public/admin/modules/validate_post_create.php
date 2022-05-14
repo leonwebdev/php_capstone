@@ -11,8 +11,7 @@ foreach ($_POST as $key => $value) {
 // var_dump($_FILES);
 // dd($_POST);
 // new Validate Object
-$validate_post_create = new Validator($_POST);
-$validate_post_create_img = new Validator($_FILES);
+$validate_post_create = new Validator($_POST, $_FILES);
 
 // The following fields are required
 $required = ['title', 'summary', 'content', 'authorid', 'categoryid', 'status'];
@@ -27,6 +26,9 @@ $validate_post_create->validateMaxLength(255, 'title');
 $validate_post_create->validateString('summary');
 $validate_post_create->validateMinLength(3, 'summary');
 $validate_post_create->validateMaxLength(255, 'summary');
+
+// Image must be valid
+$validate_post_create->validateImage('image');
 
 // Get All errors
 $errors = $validate_post_create->getErrors();
