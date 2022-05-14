@@ -82,7 +82,7 @@ include __DIR__ . '/inc/header.inc.php';
                                 <option value="0">Select your author</option>
                                 <?php foreach ($user_dtls as $key => $user_dtl) : ?>
                                 <option value="<?= esc_attr($user_dtl['id']) ?>"
-                                    <?= ($user_dtl['id'] == $_POST['authorid']) ? "selected" : "" ?>>
+                                    <?= (isset($_POST['authorid']) && $user_dtl['id'] == $_POST['authorid']) ? "selected" : "" ?>>
                                     <?= esc($user_dtl['first_name'] . ' ' . $user_dtl['last_name']) ?></option>
                                 <?php endforeach; ?>
                             </select>
@@ -94,7 +94,7 @@ include __DIR__ . '/inc/header.inc.php';
                                 <option value="0">Select category</option>
                                 <?php foreach ($cat_dtls as $key => $cat_dtl) : ?>
                                 <option value="<?= esc_attr($cat_dtl['id']) ?>"
-                                    <?= ($cat_dtl['id'] == $_POST['categoryid']) ? "selected" : "" ?>>
+                                    <?= (isset($_POST['categoryid']) && $cat_dtl['id'] == $_POST['categoryid']) ? "selected" : "" ?>>
                                     <?= esc($cat_dtl['title']) ?></option>
                                 <?php endforeach; ?>
                             </select>
@@ -104,11 +104,17 @@ include __DIR__ . '/inc/header.inc.php';
                             <label for="status" class="form-label fw-bold">Status</label>
                             <select class="form-select" id="status" name="status">
                                 <option value="0">Select status</option>
-                                <option value="draft" <?= ("draft" == $_POST['status']) ? "selected" : "" ?>>draft
+                                <option value="draft"
+                                    <?= (isset($_POST['status']) && "draft" == $_POST['status']) ? "selected" : "" ?>>
+                                    draft
                                 </option>
-                                <option value="hidden <?= ("hidden" == $_POST['status']) ? "selected" : "" ?>">hidden
+                                <option
+                                    value="hidden <?= (isset($_POST['status']) && "hidden" == $_POST['status']) ? "selected" : "" ?>">
+                                    hidden
                                 </option>
-                                <option value="post <?= ("post" == $_POST['status']) ? "selected" : "" ?>">post</option>
+                                <option
+                                    value="post <?= (isset($_POST['status']) && "post" == $_POST['status']) ? "selected" : "" ?>">
+                                    post</option>
                             </select>
                             <span class="form_validate_error my-3"><?= esc($errors['status'][0] ?? '') ?></span>
                         </div>
