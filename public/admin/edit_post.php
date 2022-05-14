@@ -128,10 +128,12 @@ include __DIR__ . '/inc/header.inc.php';
                             <label for="allow_comment" class="form-label fw-bold">Allow Comment</label>
                             <select class="form-select" id="allow_comment" name="allow_comment">
                                 <option value="1"
-                                    <?= (!isset($_POST['allow_comment']) && 1 == $post_dtl['allow_comment']) ? "selected" : "" ?>>
+                                    <?= (!isset($_POST['allow_comment']) && 1 == $post_dtl['allow_comment']) ? "selected" : "" ?>
+                                    <?= (isset($_POST['allow_comment']) && 1 == $_POST['allow_comment']) ? "selected" : "" ?>>
                                     Yes</option>
                                 <option value="0"
-                                    <?= (!isset($_POST['allow_comment']) && 0 == $post_dtl['allow_comment']) ? "selected" : "" ?>>
+                                    <?= (!isset($_POST['allow_comment']) && 0 == $post_dtl['allow_comment']) ? "selected" : "" ?>
+                                    <?= (isset($_POST['allow_comment']) && 0 == $_POST['allow_comment']) ? "selected" : "" ?>>
                                     No</option>
                             </select>
                             <span class="form_validate_error my-3"><?= esc($errors['allow_comment'][0] ?? '') ?></span>
