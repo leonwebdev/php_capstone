@@ -83,8 +83,13 @@
     <!-- Comment Exhibition Block ----------------------------------------------- -->
 
     <div id="comment_block">
+
+        <?php if (!$post_detail['allow_comment']) : ?>
+        <h2 class="flash error">This Post is not Allowed to comment!</h2>
+        <?php else : ?>
+
         <form id="comment_form" action="#comment_block" method="post">
-            <input type="hidden" name="csrf_token" value="<?=csrf()?>" />
+            <input type="hidden" name="csrf_token" value="<?= csrf() ?>" />
             <h2>Please Leave Your Comment</h2>
 
             <?php if (empty($_SESSION['user_id'])) : ?>
@@ -107,6 +112,8 @@
 
             <?php endif; ?>
         </form>
+
+        <?php endif; ?>
     </div>
     <!-- Leave a Comment Block ----------------------------------------------- -->
 
