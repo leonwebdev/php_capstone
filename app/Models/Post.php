@@ -579,4 +579,95 @@ class Post extends DatabaseQuery
         return $result;
     }
 
+    /**
+     * get Min Posts Count By Category
+     *
+     * @return string|int Min Count
+     */
+    public function getMinPostsCountByCategory(): string|int
+    {
+        $query = "SELECT COUNT(id) AS Min
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    GROUP BY categoryid
+                    ORDER BY COUNT(id) ASC
+                    LIMIT 1
+        ";
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['Min'];
+    }
+
+    /**
+     * get Min Posts Count By User
+     *
+     * @return string|int Min Count
+     */
+    public function getMinPostsCountByUser(): string|int
+    {
+        $query = "SELECT COUNT(id) AS Min
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    GROUP BY authorid
+                    ORDER BY COUNT(id) ASC
+                    LIMIT 1
+        ";
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['Min'];
+    }
+
+    /**
+     * get Max Posts Count By Category
+     *
+     * @return string|int Max Count
+     */
+    public function getMaxPostsCountByCategory(): string|int
+    {
+        $query = "SELECT COUNT(id) AS Max
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    GROUP BY categoryid
+                    ORDER BY COUNT(id) DESC
+                    LIMIT 1
+        ";
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['Max'];
+    }
+
+    /**
+     * get Max Posts Count By User
+     *
+     * @return string|int Max Count
+     */
+    public function getMaxPostsCountByUser(): string|int
+    {
+        $query = "SELECT COUNT(id) AS Max
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    GROUP BY authorid
+                    ORDER BY COUNT(id) DESC
+                    LIMIT 1
+        ";
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['Max'];
+    }
 }

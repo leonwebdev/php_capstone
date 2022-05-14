@@ -29,8 +29,30 @@ include __DIR__ . '/inc/header.inc.php';
     </div>
     <?php endif; ?>
 
+    <h1 class="mb-5"><?= esc($title); ?></h1>
+    <h2>Site Meter</h2>
+    <div class="container row mb-5 ">
+        <table class="table table-striped table-bordered" style="text-align: center;">
+            <tr>
+                <th>Posts per Category</th>
+                <th>Posts per User</th>
+                <th>Comments per User</th>
+            </tr>
+            <tr>
+                <td>Min: <?= esc($posts->getMinPostsCountByCategory()) ?></td>
+                <td>Min: <?= esc($posts->getMinPostsCountByUser()) ?></td>
+                <td>Min:</td>
+            </tr>
+            <tr>
+                <td>Max: <?= esc($posts->getMaxPostsCountByCategory()) ?></td>
+                <td>Max: <?= esc($posts->getMaxPostsCountByUser()) ?></td>
+                <td>Max:</td>
+            </tr>
+
+        </table>
+    </div>
     <div class="row">
-        <h1 class="mb-5"><?= esc($title); ?></h1>
+
         <div class="main col-12">
             <h2>Recent Log Entries</h2>
 
