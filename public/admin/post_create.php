@@ -108,12 +108,12 @@ include __DIR__ . '/inc/header.inc.php';
                                     <?= (isset($_POST['status']) && "draft" == $_POST['status']) ? "selected" : "" ?>>
                                     draft
                                 </option>
-                                <option
-                                    value="hidden <?= (isset($_POST['status']) && "hidden" == $_POST['status']) ? "selected" : "" ?>">
+                                <option value="hidden"
+                                    <?= (isset($_POST['status']) && "hidden" == $_POST['status']) ? "selected" : "" ?>>
                                     hidden
                                 </option>
-                                <option
-                                    value="post <?= (isset($_POST['status']) && "post" == $_POST['status']) ? "selected" : "" ?>">
+                                <option value="post"
+                                    <?= (isset($_POST['status']) && "post" == $_POST['status']) ? "selected" : "" ?>>
                                     post</option>
                             </select>
                             <span class="form_validate_error my-3"><?= esc($errors['status'][0] ?? '') ?></span>
