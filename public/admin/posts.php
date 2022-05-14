@@ -45,6 +45,7 @@ include __DIR__ . '/inc/header.inc.php';
                     <th>Title</th>
                     <th>Count of Comments</th>
                     <th>Create Date</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
                 <?php foreach ($post_dtls as $key => $post_dtl) : ?>
@@ -56,10 +57,14 @@ include __DIR__ . '/inc/header.inc.php';
                             href="/?p=post&postid=<?= esc_attr($post_dtl['id']) ?>"><?= esc($post_dtl['title']) ?></a>
                     </td>
                     <td><?= esc($cmt->getCommentCountByPostId($post_dtl['id'])) ?></td>
-                    <td><?= esc($post_dtl['created_at']) ?></td>
+                    <td><?= esc(formatDateTime($post_dtl['created_at'])) ?></td>
+                    <td <?= ('post' != $post_dtl['status']) ? "class=\"bg-warning text-dark fw-bold\"" : "" ?>>
+                        <?= esc($post_dtl['status']) ?></td>
                     <td>
                         <a class="btn btn-sm btn-primary me-2" href="">Edit</a>
-                        <a class="btn btn-sm btn-danger" href="">Delete</a>
+                        <a class="btn btn-sm btn-danger me-2" href="">Delete</a>
+                        <a class="btn btn-sm btn-success me-2" href="">Publish</a>
+                        <a class="btn btn-sm btn-warning" href="">Hide</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
