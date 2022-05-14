@@ -12,6 +12,7 @@ $title = 'Posts | Administration';
 
 $user_dtls = $user->getAll();
 $cat_dtls = $cat->getAll();
+$post_dtl = $posts->getOne($_GET['id']);
 
 if ('POST' === $_SERVER['REQUEST_METHOD']) {
 
@@ -22,14 +23,14 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
     /* STEP 1 - VALIDATE ALL FIELDS
    ---------------------------------------------------- */
 
-    require __DIR__ . '/modules/validate_post_create.php';
+    require __DIR__ . '/modules/validate_post_edit.php';
 
     /* STEP 2 -- IF NO ERRORS, REDIRECTE TO PROCESS_LOGIN
     -------------------------------------------------------- */
 
     if (count($errors) == 0) {
 
-        require __DIR__ . '/modules/process_post_create.php';
+        require __DIR__ . '/modules/process_post_edit.php';
     }
 }
 
@@ -49,7 +50,7 @@ include __DIR__ . '/inc/header.inc.php';
     </div>
     <?php endif; ?>
 
-    <h1 class="mb-5">Create a New Post</h1>
+    <h1 class="mb-5">Edit Post</h1>
     <div class="container">
         <div class="row">
             <div class="col-2"> </div>
@@ -59,19 +60,19 @@ include __DIR__ . '/inc/header.inc.php';
                     <div class="mb-3">
                         <label for="title" class="form-label fw-bold">Title</label>
                         <input type="text" class="form-control" id="title" name="title"
-                            value="<?= esc($_POST['title'] ?? '') ?>">
+                            value="<?= esc($_POST['title'] ?? $post_dtl['title']) ?>">
                         <span class="form_validate_error my-3"><?= esc($errors['title'][0] ?? '') ?></span>
                     </div>
                     <div class="mb-3">
                         <label for="summary" class="form-label fw-bold">Summary</label>
                         <textarea class="form-control" id="summary" name="summary" rows="3"
-                            placeholder="Add a summary on this post..."><?= esc($_POST['summary'] ?? ''); ?></textarea>
+                            placeholder="Add a summary on this post..."><?= esc($_POST['summary'] ?? $post_dtl['summary']); ?></textarea>
                         <span class="form_validate_error my-3"><?= esc($errors['summary'][0] ?? '') ?></span>
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label fw-bold">Content</label>
                         <textarea class="form-control editor" id="content" name="content"
-                            rows="3"><?= esc($_POST['content'] ?? ''); ?></textarea>
+                            rows="3"><?= esc($_POST['content'] ?? $post_dtl['content']); ?></textarea>
                         <span class="form_validate_error my-3"><?= esc($errors['content'][0] ?? '') ?></span>
                     </div>
 
@@ -82,6 +83,7 @@ include __DIR__ . '/inc/header.inc.php';
                                 <option value="0">Select your author</option>
                                 <?php foreach ($user_dtls as $key => $user_dtl) : ?>
                                 <option value="<?= esc_attr($user_dtl['id']) ?>"
+                                    <?= (!isset($_POST['authorid']) && $user_dtl['id'] == $post_dtl['authorid']) ? "selected" : "" ?>
                                     <?= (isset($_POST['authorid']) && $user_dtl['id'] == $_POST['authorid']) ? "selected" : "" ?>>
                                     <?= esc($user_dtl['first_name'] . ' ' . $user_dtl['last_name']) ?></option>
                                 <?php endforeach; ?>
@@ -94,6 +96,7 @@ include __DIR__ . '/inc/header.inc.php';
                                 <option value="0">Select category</option>
                                 <?php foreach ($cat_dtls as $key => $cat_dtl) : ?>
                                 <option value="<?= esc_attr($cat_dtl['id']) ?>"
+                                    <?= (!isset($_POST['categoryid']) && $cat_dtl['id'] == $post_dtl['categoryid']) ? "selected" : "" ?>
                                     <?= (isset($_POST['categoryid']) && $cat_dtl['id'] == $_POST['categoryid']) ? "selected" : "" ?>>
                                     <?= esc($cat_dtl['title']) ?></option>
                                 <?php endforeach; ?>
@@ -105,14 +108,17 @@ include __DIR__ . '/inc/header.inc.php';
                             <select class="form-select" id="status" name="status">
                                 <option value="0">Select status</option>
                                 <option value="draft"
+                                    <?= (!isset($_POST['status']) && "draft" == $post_dtl['status']) ? "selected" : "" ?>
                                     <?= (isset($_POST['status']) && "draft" == $_POST['status']) ? "selected" : "" ?>>
                                     draft
                                 </option>
                                 <option value="hidden"
+                                    <?= (!isset($_POST['status']) && "hidden" == $post_dtl['status']) ? "selected" : "" ?>
                                     <?= (isset($_POST['status']) && "hidden" == $_POST['status']) ? "selected" : "" ?>>
                                     hidden
                                 </option>
                                 <option value="post"
+                                    <?= (!isset($_POST['status']) && "post" == $post_dtl['status']) ? "selected" : "" ?>
                                     <?= (isset($_POST['status']) && "post" == $_POST['status']) ? "selected" : "" ?>>
                                     post</option>
                             </select>
@@ -122,10 +128,10 @@ include __DIR__ . '/inc/header.inc.php';
                             <label for="allow_comment" class="form-label fw-bold">Allow Comment</label>
                             <select class="form-select" id="allow_comment" name="allow_comment">
                                 <option value="1"
-                                    <?= (isset($_POST['allow_comment']) && 1 == $_POST['allow_comment']) ? "selected" : "" ?>>
+                                    <?= (!isset($_POST['allow_comment']) && 1 == $post_dtl['allow_comment']) ? "selected" : "" ?>>
                                     Yes</option>
                                 <option value="0"
-                                    <?= (isset($_POST['allow_comment']) && 0 == $_POST['allow_comment']) ? "selected" : "" ?>>
+                                    <?= (!isset($_POST['allow_comment']) && 0 == $post_dtl['allow_comment']) ? "selected" : "" ?>>
                                     No</option>
                             </select>
                             <span class="form_validate_error my-3"><?= esc($errors['allow_comment'][0] ?? '') ?></span>
@@ -135,6 +141,10 @@ include __DIR__ . '/inc/header.inc.php';
                     </div>
 
                     <div class="mb-3">
+                        <div style="width: 200px;">
+                            <img src="./../images/posts/<?= esc_attr($post_dtl['image']) ?>"
+                                style="width: 100%;height:auto;">
+                        </div>
                         <label for="image" class="form-label fw-bold">Upload a picture</label>
                         <input class="form-control" type="file" id="image" name="image">
                         <span class="form_validate_error my-3"><?= esc($errors['image'][0] ?? '') ?></span>
