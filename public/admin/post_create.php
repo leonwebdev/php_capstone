@@ -13,6 +13,26 @@ $title = 'Posts | Administration';
 $user_dtls = $user->getAll();
 $cat_dtls = $cat->getAll();
 
+if ('POST' === $_SERVER['REQUEST_METHOD']) {
+
+    if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die('CSRF token mismatch');
+    }
+
+    /* STEP 1 - VALIDATE ALL FIELDS
+   ---------------------------------------------------- */
+
+    require __DIR__ . '/modules/validate_post_create.php';
+
+    /* STEP 2 -- IF NO ERRORS, REDIRECTE TO PROCESS_LOGIN
+    -------------------------------------------------------- */
+
+    if (count($errors) == 0) {
+
+        require __DIR__ . '/modules/process_post_create.php';
+    }
+}
+
 include __DIR__ . '/inc/header.inc.php';
 
 ?><div class="content container mt-5 mb-5">
@@ -101,10 +121,10 @@ include __DIR__ . '/inc/header.inc.php';
                     </div>
 
                     <div class="mb-3">
-                        <label for="formFile" class="form-label fw-bold">Upload a picture</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <label for="image" class="form-label fw-bold">Upload a picture</label>
+                        <input class="form-control" type="file" id="image" name="image">
                     </div>
-                    <div class="mb-3">
+                    <div class="mt-5">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
