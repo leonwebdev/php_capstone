@@ -403,13 +403,16 @@ class Post extends DatabaseQuery
     {
         $query = "UPDATE {$this->table}
                     SET
-                    status = 'post'
+                    status = 'post',
+                    published_at = :time
                     WHERE
                     id = :id";
 
         $stmt = self::$dbh->prepare($query);
 
         $stmt->bindValue(':id', $id);
+
+        $stmt->bindValue(':time', date('Y-m-d H:i:s'));
 
         $stmt->execute();
 
@@ -530,6 +533,50 @@ class Post extends DatabaseQuery
         );
 
         return $message;
+    }
+
+    /**
+     * update a post's info by post id
+     *
+     * @param   array  $array  info will be updated
+     * @param   int|string    $id     post id
+     *
+     * @return  mixed  return last updated post info
+     */
+    public function update(array $array, int|string $id): mixed
+    {
+        $query = "UPDATE {$this->table}
+                    SET
+                      title = :title,
+                      summary = :summary,
+                      content = :content,
+                      authorid = :authorid,
+                      categoryid = :categoryid,
+                      status = :status,
+                      allow_comment = :allow_comment,
+                      image = :image
+
+                    WHERE
+                      id = :id
+                      ";
+
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->bindValue(':title', $array['title']);
+        $stmt->bindValue(':summary', $array['summary']);
+        $stmt->bindValue(':content', $array['content']);
+        $stmt->bindValue(':authorid', $array['authorid']);
+        $stmt->bindValue(':categoryid', $array['categoryid']);
+        $stmt->bindValue(':status', $array['status']);
+        $stmt->bindValue(':allow_comment', $array['allow_comment']);
+        $stmt->bindValue(':image', $array['image']);
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+
+        $result = $this->getOne($id);
+
+        return $result;
     }
 
 }
