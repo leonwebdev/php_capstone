@@ -224,4 +224,52 @@ class Comment extends DatabaseQuery
 
         return $result['count'];
     }
+
+    /**
+     * get Min Comments Count By User
+     *
+     * @return string|int Min Count
+     */
+    public function getMinCommentsCountByUser(): string|int
+    {
+        $query = "SELECT COUNT(id) AS Min
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    GROUP BY userid
+                    ORDER BY COUNT(id) ASC
+                    LIMIT 1
+        ";
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['Min'];
+    }
+
+
+    /**
+     * get Max Comments Count By User
+     *
+     * @return string|int Max Count
+     */
+    public function getMaxCommentsCountByUser(): string|int
+    {
+        $query = "SELECT COUNT(id) AS Max
+                    FROM {$this->table}
+                    WHERE deleted = 0
+                    GROUP BY userid
+                    ORDER BY COUNT(id) DESC
+                    LIMIT 1
+        ";
+        $stmt = self::$dbh->prepare($query);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return $result['Max'];
+    }
+
 }

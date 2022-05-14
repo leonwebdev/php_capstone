@@ -41,12 +41,12 @@ include __DIR__ . '/inc/header.inc.php';
             <tr>
                 <td>Min: <?= esc($posts->getMinPostsCountByCategory()) ?></td>
                 <td>Min: <?= esc($posts->getMinPostsCountByUser()) ?></td>
-                <td>Min:</td>
+                <td>Min: <?= esc($cmt->getMinCommentsCountByUser()) ?></td>
             </tr>
             <tr>
                 <td>Max: <?= esc($posts->getMaxPostsCountByCategory()) ?></td>
                 <td>Max: <?= esc($posts->getMaxPostsCountByUser()) ?></td>
-                <td>Max:</td>
+                <td>Max: <?= esc($cmt->getMaxCommentsCountByUser()) ?></td>
             </tr>
 
         </table>
