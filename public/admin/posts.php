@@ -10,11 +10,17 @@ $title = 'Posts | Administration';
 
 /*--------------------------------------------------------------------------*/
 
-$post_dtls = $posts->getAll();
+if (!empty($_GET['search'])) {
 
-$post_dtls = array_reverse($post_dtls);
+    $post_dtls = $posts->getAllBySearch($_GET['search']);
 
+    $post_dtls = array_reverse($post_dtls);
+} else {
 
+    $post_dtls = $posts->getAll();
+
+    $post_dtls = array_reverse($post_dtls);
+}
 
 include __DIR__ . '/inc/header.inc.php';
 
@@ -76,7 +82,8 @@ include __DIR__ . '/inc/header.inc.php';
                         <?= ($post_dtl['allow_comment']) ? 'Yes' : 'No' ?></td>
 
                     <td><?= esc(formatDateTime($post_dtl['published_at'])) ?></td>
-                    <td <?= ('post' != $post_dtl['status']) ? "class=\"bg-warning text-dark fw-bold\"" : "" ?>>
+                    <td
+                        <?= ('draft' == $post_dtl['status']) ? "class=\"bg-warning text-dark fw-bold\"" : (('hidden' == $post_dtl['status']) ? "class=\"bg-dark text-danger fw-bold\"" : "") ?>>
                         <?= esc($post_dtl['status']) ?></td>
                     <td>
                         <a class="btn btn-sm btn-primary me-2"
