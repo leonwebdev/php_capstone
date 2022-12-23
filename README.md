@@ -9,6 +9,11 @@
 
 ---
 
+- @UPDATE 2022-12-22
+- Readme file updated
+
+---
+
 - @UPDATE 2022-5-15
 - PHP Capstone Complete
 
@@ -26,8 +31,3 @@
 
 - @UPDATE 2022-4-9
 - Intro PHP Project Complete
-
----
-
-- @UPDATE 2022-12-22
-- Readme file updated
