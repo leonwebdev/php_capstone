@@ -1,6 +1,6 @@
 # PHP Capstone Project
 
-- Lihang Yao <yao-l@webmail.uwinnipeg.ca>
+- L Y <yao-l@webmail.uwinnipeg.ca>
 - <http://capstone.leon-web-dev.com>
 - Server IP: 52.60.51.49
 - Admin Dashboard <http://capstone.leon-web-dev.com/admin>
@@ -26,3 +26,8 @@
 
 - @UPDATE 2022-4-9
 - Intro PHP Project Complete
+
+---
+
+- @UPDATE 2022-12-22
+- Readme file updated
